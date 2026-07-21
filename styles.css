@@ -111,18 +111,35 @@ button, input, select, textarea { font: inherit; }
   display: flex;
   align-items: center;
   isolation: isolate;
-  background: linear-gradient(118deg, #fbf7ee 0%, #f7efdf 52%, #edf0f1 100%);
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(90deg,
+      rgba(251, 247, 238, 1) 0%,
+      rgba(251, 247, 238, 0.99) 31%,
+      rgba(251, 247, 238, 0.92) 46%,
+      rgba(251, 247, 238, 0.66) 60%,
+      rgba(251, 247, 238, 0.23) 76%,
+      rgba(251, 247, 238, 0.06) 100%),
+    linear-gradient(180deg,
+      rgba(251, 247, 238, 0.08) 0%,
+      rgba(14, 32, 56, 0.08) 100%),
+    url("assets/hero-family.webp");
+  background-size: cover;
+  background-position: center 47%;
+  background-repeat: no-repeat;
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  inset: auto -12% -34% 36%;
-  height: 62%;
+  inset: 0;
   z-index: -1;
-  background: linear-gradient(132deg, rgba(184, 148, 77, 0.13), rgba(14, 32, 56, 0.08));
-  transform: skewY(-7deg);
   pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(251, 247, 238, 0) 72%,
+      rgba(251, 247, 238, 0.78) 91%,
+      var(--cream) 100%);
 }
 
 .hero::after {
@@ -131,7 +148,10 @@ button, input, select, textarea { font: inherit; }
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(90deg, rgba(255, 253, 248, 0.54), transparent 54%);
+  background: linear-gradient(110deg,
+    rgba(184, 148, 77, 0.06) 0%,
+    rgba(184, 148, 77, 0) 48%,
+    rgba(14, 32, 56, 0.08) 100%);
 }
 
 .hero-grid,
@@ -216,48 +236,11 @@ h3 { font-size: 22px; margin: 28px 0 12px; }
 .hero-visual {
   position: relative;
   min-width: 0;
-  padding-bottom: 82px;
-}
-
-.hero-photo {
-  position: relative;
-  margin: 0;
-  overflow: hidden;
-  min-height: 470px;
-  border-radius: 34px;
-  border: 1px solid rgba(184, 148, 77, 0.35);
-  box-shadow: 0 30px 80px rgba(14, 32, 56, 0.17);
-  background: var(--navy);
-}
-
-.hero-photo::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(14, 32, 56, 0.02) 38%, rgba(14, 32, 56, 0.72) 100%);
-  pointer-events: none;
-}
-
-.hero-photo img {
-  width: 100%;
-  height: 100%;
-  min-height: 470px;
-  display: block;
-  object-fit: cover;
-  object-position: 51% center;
-}
-
-.hero-photo figcaption {
-  position: absolute;
-  left: 26px;
-  right: 26px;
-  bottom: 116px;
-  z-index: 1;
-  color: rgba(255, 253, 248, 0.92);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.45;
-  max-width: 390px;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0 0 26px;
 }
 
 .hero-card,
@@ -275,14 +258,16 @@ h3 { font-size: 22px; margin: 28px 0 12px; }
 .hero-card {
   position: relative;
   overflow: hidden;
-  width: min(88%, 470px);
-  margin: -94px 22px 0 auto;
-  padding: 24px 28px 28px;
+  width: min(92%, 470px);
+  margin: 0;
+  padding: 26px 30px 30px;
   background:
-    linear-gradient(150deg, rgba(14, 32, 56, 0.98), rgba(20, 43, 73, 0.96)),
+    linear-gradient(150deg, rgba(14, 32, 56, 0.96), rgba(20, 43, 73, 0.92)),
     var(--navy);
   color: #fffdf8;
-  border-color: rgba(216, 191, 131, 0.35);
+  border-color: rgba(216, 191, 131, 0.42);
+  box-shadow: 0 30px 80px rgba(14, 32, 56, 0.28);
+  backdrop-filter: blur(7px);
 }
 
 .hero-card-head {
@@ -444,11 +429,20 @@ footer h3 { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; 
   .hero-grid, .two-col, .footer-grid { grid-template-columns: 1fr; }
   .form-panel { position: static; }
   .cards, .stories { grid-template-columns: 1fr; }
-  .hero { min-height: unset; padding-top: 80px; }
-  .hero::before { inset: auto -24% -28% 12%; height: 42%; }
-  .hero-visual { max-width: 720px; padding-bottom: 58px; }
-  .hero-photo { min-height: 430px; }
-  .hero-photo img { min-height: 430px; }
+  .hero {
+    min-height: unset;
+    padding-top: 80px;
+    background-image:
+      linear-gradient(90deg,
+        rgba(251, 247, 238, 0.99) 0%,
+        rgba(251, 247, 238, 0.96) 52%,
+        rgba(251, 247, 238, 0.68) 74%,
+        rgba(251, 247, 238, 0.30) 100%),
+      linear-gradient(180deg, rgba(251, 247, 238, 0.12), rgba(14, 32, 56, 0.10)),
+      url("assets/hero-family.webp");
+    background-position: 58% center;
+  }
+  .hero-visual { min-height: 390px; max-width: 720px; padding: 0 0 26px; }
   .hero-card { max-width: 560px; }
 }
 
@@ -458,11 +452,19 @@ footer h3 { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; 
   .brand small { display: none; }
   .hero-card, .paper, .form-panel, .doc-card { padding: 24px; }
   .lead { font-size: 17px; }
-  .hero-visual { padding-bottom: 42px; }
-  .hero-photo { min-height: 390px; border-radius: 26px; }
-  .hero-photo img { min-height: 390px; object-position: 54% center; }
-  .hero-photo figcaption { left: 20px; right: 20px; bottom: 102px; }
-  .hero-card { width: calc(100% - 22px); margin: -76px 0 0 auto; }
+  .hero {
+    background-image:
+      linear-gradient(180deg,
+        rgba(251, 247, 238, 0.99) 0%,
+        rgba(251, 247, 238, 0.97) 52%,
+        rgba(251, 247, 238, 0.78) 69%,
+        rgba(251, 247, 238, 0.45) 100%),
+      linear-gradient(90deg, rgba(251, 247, 238, 0.35), rgba(14, 32, 56, 0.12)),
+      url("assets/hero-family.webp");
+    background-position: 62% center;
+  }
+  .hero-visual { min-height: 340px; padding: 0 0 12px; }
+  .hero-card { width: 100%; margin: 0; }
   .hero-card blockquote { font-size: 18px; }
   .hero-logo-wrap { width: 84px; min-height: 70px; margin: 16px 0 12px; }
   .hero-logo-wrap img { width: 70px; height: 70px; }
