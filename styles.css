@@ -124,8 +124,10 @@ button, input, select, textarea { font: inherit; }
       rgba(251, 247, 238, 0.08) 0%,
       rgba(14, 32, 56, 0.08) 100%),
     url("assets/hero-family.webp");
-  background-size: cover;
-  background-position: center 47%;
+  /* Градієнти завжди перекривають увесь hero, а фото окремо
+     вписується через contain і зміщується вправо. */
+  background-size: 100% 100%, 100% 100%, contain;
+  background-position: center, center, 200% 50%;
   background-repeat: no-repeat;
 }
 
@@ -181,8 +183,28 @@ h1, h2, h3 {
   letter-spacing: -0.04em;
 }
 
-h1 { font-size: clamp(38px, 4.8vw, 64px); max-width: 900px; }
+h1 { max-width: 900px; }
 h2 { font-size: clamp(28px, 3.2vw, 44px); margin-bottom: 22px; }
+
+.hero-title-main {
+  display: block;
+  font-size: 54px;
+  font-weight: 800;
+  line-height: 1.06;
+}
+
+.hero-title-accent {
+  display: block;
+  max-width: 670px;
+  margin-top: 16px;
+  padding-left: 18px;
+  border-left: 3px solid var(--gold);
+  color: #8f6d31;
+  font-size: clamp(25px, 2.35vw, 34px);
+  font-weight: 650;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
 h3 { font-size: 22px; margin: 28px 0 12px; }
 
 .lead {
@@ -440,8 +462,10 @@ footer h3 { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; 
         rgba(251, 247, 238, 0.30) 100%),
       linear-gradient(180deg, rgba(251, 247, 238, 0.12), rgba(14, 32, 56, 0.10)),
       url("assets/hero-family.webp");
-    background-position: 58% center;
+    background-size: 100% 100%, 100% 100%, cover;
+    background-position: center, center, 58% center;
   }
+  .hero-title-main { font-size: 46px; }
   .hero-visual { min-height: 390px; max-width: 720px; padding: 0 0 26px; }
   .hero-card { max-width: 560px; }
 }
@@ -461,7 +485,14 @@ footer h3 { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; 
         rgba(251, 247, 238, 0.45) 100%),
       linear-gradient(90deg, rgba(251, 247, 238, 0.35), rgba(14, 32, 56, 0.12)),
       url("assets/hero-family.webp");
-    background-position: 62% center;
+    background-size: 100% 100%, 100% 100%, cover;
+    background-position: center, center, 62% center;
+  }
+  .hero-title-main { font-size: 38px; }
+  .hero-title-accent {
+    margin-top: 12px;
+    padding-left: 14px;
+    font-size: 24px;
   }
   .hero-visual { min-height: 340px; padding: 0 0 12px; }
   .hero-card { width: 100%; margin: 0; }
