@@ -111,49 +111,46 @@ button, input, select, textarea { font: inherit; }
   display: flex;
   align-items: center;
   isolation: isolate;
-  background-color: var(--cream);
-  background-image:
-    linear-gradient(90deg,
-      rgba(251, 247, 238, 1) 0%,
-      rgba(251, 247, 238, 0.99) 31%,
-      rgba(251, 247, 238, 0.92) 46%,
-      rgba(251, 247, 238, 0.66) 60%,
-      rgba(251, 247, 238, 0.23) 76%,
-      rgba(251, 247, 238, 0.06) 100%),
-    linear-gradient(180deg,
-      rgba(251, 247, 238, 0.08) 0%,
-      rgba(14, 32, 56, 0.08) 100%),
-    url("assets/hero-family.webp");
-  /* Градієнти завжди перекривають увесь hero, а фото окремо
-     вписується через contain і зміщується вправо. */
-  background-size: 100% 100%, 100% 100%, contain;
-  background-position: center, center, 200% 50%;
-  background-repeat: no-repeat;
+  background: var(--cream);
 }
 
+/* Фото залишається вписаним через contain, але живе на окремому шарі.
+   Завдяки масці його ліва межа поступово розчиняється, а не ділить hero навпіл. */
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0;
-  z-index: -1;
+  z-index: -2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 68%;
   pointer-events: none;
-  background:
-    linear-gradient(180deg,
-      rgba(251, 247, 238, 0) 72%,
-      rgba(251, 247, 238, 0.78) 91%,
-      var(--cream) 100%);
+  background: url("assets/hero-family.webp") right center / contain no-repeat;
+  opacity: 0.96;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.10) 9%, rgba(0, 0, 0, 0.58) 27%, #000 47%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.10) 9%, rgba(0, 0, 0, 0.58) 27%, #000 47%);
 }
 
+/* Бежевий градієнт захищає текст і м'яко з'єднує фото з фоном секції. */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(110deg,
-    rgba(184, 148, 77, 0.06) 0%,
-    rgba(184, 148, 77, 0) 48%,
-    rgba(14, 32, 56, 0.08) 100%);
+  background:
+    linear-gradient(90deg,
+      rgba(251, 247, 238, 1) 0%,
+      rgba(251, 247, 238, 0.99) 27%,
+      rgba(251, 247, 238, 0.95) 39%,
+      rgba(251, 247, 238, 0.76) 50%,
+      rgba(251, 247, 238, 0.35) 62%,
+      rgba(251, 247, 238, 0.08) 76%,
+      rgba(251, 247, 238, 0) 100%),
+    linear-gradient(180deg,
+      rgba(251, 247, 238, 0) 70%,
+      rgba(251, 247, 238, 0.52) 88%,
+      var(--cream) 100%);
 }
 
 .hero-grid,
@@ -294,7 +291,7 @@ h3 { font-size: 22px; margin: 28px 0 12px; }
 
 .hero-card-head {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 14px;
   color: var(--gold-light);
@@ -328,7 +325,7 @@ h3 { font-size: 22px; margin: 28px 0 12px; }
 .hero-card blockquote { position: relative; z-index: 1; font-size: 19px; font-weight: 700; line-height: 1.45; margin: 0; }
 
 .paper { padding: clamp(28px, 5vw, 58px); }
-.paper p { font-size: 17px; margin: 0 0 18px; }
+.paper p:not(.eyebrow) { font-size: 17px; margin: 0 0 18px; }
 .final-text { font-size: 21px !important; font-weight: 800; border-left: 4px solid var(--gold); padding-left: 18px; margin-top: 30px !important; }
 
 ul { list-style: none; padding: 0; margin: 14px 0 28px; }
@@ -454,16 +451,23 @@ footer h3 { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; 
   .hero {
     min-height: unset;
     padding-top: 80px;
-    background-image:
+  }
+  .hero::before {
+    width: 100%;
+    background-size: cover;
+    background-position: 58% center;
+    opacity: 0.56;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero::after {
+    background:
       linear-gradient(90deg,
         rgba(251, 247, 238, 0.99) 0%,
         rgba(251, 247, 238, 0.96) 52%,
-        rgba(251, 247, 238, 0.68) 74%,
-        rgba(251, 247, 238, 0.30) 100%),
-      linear-gradient(180deg, rgba(251, 247, 238, 0.12), rgba(14, 32, 56, 0.10)),
-      url("assets/hero-family.webp");
-    background-size: 100% 100%, 100% 100%, cover;
-    background-position: center, center, 58% center;
+        rgba(251, 247, 238, 0.72) 76%,
+        rgba(251, 247, 238, 0.38) 100%),
+      linear-gradient(180deg, rgba(251, 247, 238, 0.08) 65%, var(--cream) 100%);
   }
   .hero-title-main { font-size: 46px; }
   .hero-visual { min-height: 390px; max-width: 720px; padding: 0 0 26px; }
@@ -476,17 +480,18 @@ footer h3 { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; 
   .brand small { display: none; }
   .hero-card, .paper, .form-panel, .doc-card { padding: 24px; }
   .lead { font-size: 17px; }
-  .hero {
-    background-image:
+  .hero::before {
+    background-position: 62% center;
+    opacity: 0.46;
+  }
+  .hero::after {
+    background:
       linear-gradient(180deg,
         rgba(251, 247, 238, 0.99) 0%,
-        rgba(251, 247, 238, 0.97) 52%,
-        rgba(251, 247, 238, 0.78) 69%,
-        rgba(251, 247, 238, 0.45) 100%),
-      linear-gradient(90deg, rgba(251, 247, 238, 0.35), rgba(14, 32, 56, 0.12)),
-      url("assets/hero-family.webp");
-    background-size: 100% 100%, 100% 100%, cover;
-    background-position: center, center, 62% center;
+        rgba(251, 247, 238, 0.97) 50%,
+        rgba(251, 247, 238, 0.80) 70%,
+        rgba(251, 247, 238, 0.54) 100%),
+      linear-gradient(90deg, rgba(251, 247, 238, 0.48), rgba(14, 32, 56, 0.08));
   }
   .hero-title-main { font-size: 38px; }
   .hero-title-accent {
