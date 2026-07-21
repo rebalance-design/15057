@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520">
+<rect width="900" height="520" fill="#F7F0E3"/>
+<rect x="44" y="44" width="812" height="432" rx="28" fill="#FFFDF8" stroke="#E4D3B0" stroke-width="2"/>
+<line x1="80" y1="96" x2="820" y2="96" stroke="#B8944D" stroke-width="3"/>
+<text x="80" y="190" font-family="Montserrat,Arial" font-size="48" font-weight="700" fill="#0E2038">Матеріал</text>
+<text x="80" y="260" font-family="Montserrat,Arial" font-size="28" fill="#5D6A7B">заготовка картки</text>
+</svg>
