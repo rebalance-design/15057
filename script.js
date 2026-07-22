@@ -29,8 +29,6 @@ const orgField = document.querySelector('#organization');
 const roleField = document.querySelector('#role');
 const formatField = document.querySelector('#join-format');
 const fileField = document.querySelector('#signed-file');
-const preview = document.querySelector('#statement-preview');
-const copyButton = document.querySelector('#copy-statement');
 const submitButton = document.querySelector('#submit-button');
 const formStatus = document.querySelector('#form-status');
 const formStartedAt = Date.now();
@@ -45,29 +43,13 @@ function buildStatement() {
 
   if (details) identity += `, ${details}`;
 
-  return `Я, ${identity}, підтверджую, що ознайомився / ознайомилася з текстом публічної резолюції щодо підтримки законопроєкту №15057 та приєднуюся до неї ${format}.\n\nДаю згоду на зазначення мого імені / назви організації у списку підписантів цієї резолюції.\n\nМені відомо, що резолюція може бути подана до Міністерства оборони України, профільних комітетів Верховної Ради України, інших державних органів, а також оприлюднена в межах адвокації законопроєкту №15057.`;
+  return `Я, ${identity}, підтверджую ознайомлення з повним текстом публічної резолюції за результатами обговорення законопроєкту №15057 та добровільно приєднуюся до неї ${format}.
+
+Підтримую викладені в резолюції висновки, пропозиції та звернення щодо забезпечення рівного державного захисту дітей з інвалідністю незалежно від статусу їхніх батьків.
+
+Даю згоду на включення мого імені / назви організації та посади або статусу до переліку підписантів резолюції.`;
 }
 
-function updatePreview() {
-  if (preview) preview.textContent = buildStatement();
-}
-
-[nameField, orgField, roleField, formatField].forEach((field) => {
-  field?.addEventListener('input', updatePreview);
-  field?.addEventListener('change', updatePreview);
-});
-
-copyButton?.addEventListener('click', async () => {
-  const text = buildStatement();
-
-  try {
-    await navigator.clipboard.writeText(text);
-    copyButton.textContent = 'Скопійовано';
-    setTimeout(() => { copyButton.textContent = 'Скопіювати текст заяви'; }, 1800);
-  } catch {
-    showStatus('Не вдалося скопіювати текст. Виділіть його та скопіюйте вручну.', 'error');
-  }
-});
 
 function showStatus(message, type) {
   if (!formStatus) return;
@@ -86,7 +68,9 @@ function getFileExtension(filename) {
 }
 
 function validateFile(file) {
-  if (!file) return;
+  if (!file) {
+    throw new Error('Додайте копію підписаної заяви.');
+  }
 
   const extension = getFileExtension(file.name);
   if (!ALLOWED_FILE_EXTENSIONS.includes(extension)) {
@@ -189,7 +173,6 @@ form?.addEventListener('submit', async (event) => {
     }
 
     form.reset();
-    updatePreview();
     showStatus('Дякуємо. Ваші дані успішно надіслано.', 'success');
   } catch (error) {
     console.error(error);
@@ -213,8 +196,6 @@ fileField?.addEventListener('change', () => {
     showStatus(error instanceof Error ? error.message : 'Недопустимий файл.', 'error');
   }
 });
-
-updatePreview();
 
 
 /* PDF modal: спільна резолюція */

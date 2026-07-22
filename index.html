@@ -26,7 +26,7 @@
         <a href="#media">Матеріали в медіа</a>
         <a href="#bill">Законопроєкт</a>
         <a href="#stories">Наші історії</a>
-        <a class="nav-cta" href="#join">Приєднатися</a>
+        <a class="nav-cta nav-cta-primary" href="#join">Приєднатися</a>
       </nav>
     </div>
   </header>
@@ -85,7 +85,7 @@
 
             <label>
               ПІБ *
-              <input required type="text" name="name" id="name" autocomplete="name" placeholder="Ім’я та прізвище" maxlength="120" />
+              <input required type="text" name="name" id="name" autocomplete="name" placeholder="Шевченко Тарас Григорович" maxlength="120" />
             </label>
 
             <label>
@@ -94,8 +94,8 @@
             </label>
 
             <label>
-              Посада / статус
-              <input type="text" name="role" id="role" placeholder="Наприклад: юрист, лікарка, представник ГО, член родини" maxlength="180" />
+              Посада / статус *
+              <input required type="text" name="role" id="role" placeholder="Юрист, лікарка, представник ГО, член родини" maxlength="180" />
             </label>
 
             <label>
@@ -104,8 +104,8 @@
             </label>
 
             <label>
-              Телефон / месенджер
-              <input type="text" name="phone" autocomplete="tel" placeholder="+380 XX XXX XX XX або @username" maxlength="80" />
+              Телефон
+              <input type="tel" name="phone" autocomplete="tel" placeholder="+380 67 123 45 67" maxlength="40" />
             </label>
 
             <label>
@@ -125,32 +125,50 @@
               <textarea name="comment" rows="4" placeholder="Короткий коментар, уточнення або пропозиція" maxlength="2000"></textarea>
             </label>
 
+            <div class="statement-preparation field-full">
+              <div class="statement-preparation-head">
+                <div>
+                  <strong>Підготуйте та підпишіть заяву-приєднання</strong>
+                  <p>Завантажте шаблон, заповніть його, підпишіть і додайте копію до форми.</p>
+                </div>
+                <a class="button secondary statement-template-link" href="assets/join_template.docx" download>Завантажити шаблон заяви (.docx)</a>
+              </div>
+
+              <details class="signing-guide">
+                <summary>Як заповнити й підписати заяву</summary>
+                <div class="signing-guide-content">
+                  <ol>
+                    <li>Завантажте шаблон, внесіть ПІБ, посаду або статус, організацію (за наявності), контактні дані та дату.</li>
+                    <li>Якщо приєднуєтеся від імені організації, зазначте посаду та підставу повноважень представляти її.</li>
+                    <li><b>Власноручний підпис:</b> роздрукуйте заяву, підпишіть її та зробіть чітке фото або скан усієї сторінки.</li>
+                    <li><b>КЕП:</b> підпишіть заповнений документ кваліфікованим електронним підписом і завантажте отриманий файл <code>.p7s</code>. Якщо сервіс створив відокремлений підпис, збережіть також вихідний документ для можливої перевірки.</li>
+                    <li>Переконайтеся, що ПІБ у заяві збігається з ПІБ у формі, а текст і підпис добре читаються.</li>
+                  </ol>
+                  <p class="signing-note">Контактні дані та копія підпису не публікуються; вони використовуються для перевірки заяви та комунікації щодо резолюції.</p>
+                </div>
+              </details>
+            </div>
+
             <label class="field-full">
-              Файл із КЕП (.p7s) або зображення підписаної заяви
-              <input id="signed-file" type="file" name="signed_file" accept=".p7s,image/jpeg,image/png,image/webp,image/heic,image/heif" />
-              <small class="field-help">Необов’язково. Допустимі .p7s, JPG, PNG, WEBP, HEIC або HEIF — до 8 МБ.</small>
+              Копія підписаної заяви *
+              <input required id="signed-file" type="file" name="signed_file" accept=".p7s,image/jpeg,image/png,image/webp,image/heic,image/heif" />
+              <small class="field-help">Обов’язково. Додайте файл .p7s або чітке зображення у форматі JPG, PNG, WEBP, HEIC чи HEIF — до 8 МБ.</small>
             </label>
 
             <label class="checkbox field-full">
               <input required type="checkbox" name="consent_publication" />
-              <span>Підтверджую, що ознайомився / ознайомилася з текстом публічної резолюції та даю згоду на зазначення мого імені / назви організації у списку підписантів.</span>
+              <span>Підтверджую, що ознайомився / ознайомилася з текстом публічної резолюції та даю згоду на зазначення мого імені / назви організації у списку підписантів. *</span>
             </label>
 
             <label class="checkbox field-full">
               <input required type="checkbox" name="consent_data" />
-              <span>Надаю згоду на обробку переданих персональних даних виключно для оформлення приєднання до резолюції та комунікації щодо цієї ініціативи.</span>
+              <span>Надаю згоду на обробку переданих персональних даних виключно для оформлення приєднання до резолюції та комунікації щодо цієї ініціативи. *</span>
             </label>
 
             <button class="button primary full field-full" type="submit" id="submit-button">Надіслати дані</button>
             <div class="form-status field-full" id="form-status" role="status" aria-live="polite"></div>
           </form>
-
-          <div class="statement-box">
-            <h3>Чернетка заяви-приєднання</h3>
-            <p id="statement-preview">Заповніть ПІБ, організацію та статус — тут з’явиться текст заяви.</p>
-            <button class="button ghost full" type="button" id="copy-statement">Скопіювати текст заяви</button>
-          </div>
-                </div>
+        </div>
       </div>
     </section>
 
