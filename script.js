@@ -1,11 +1,21 @@
 /*
- * Вставте URL розгорнутого Google Apps Script Web App нижче.
- * Приклад: https://script.google.com/macros/s/AKfycb.../exec
+ * Форма приєднання до ГО «Майбутнє має право»
  */
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydApJpw28lEfSdQCHiueX346ae_-mNHq_KUi6HzwhRnaiW1abQU1hO1DRyPYkuPvMK/exec';
-const MAX_FILE_SIZE = 8 * 1024 * 1024;
-const ALLOWED_FILE_EXTENSIONS = ['p7s', 'jpg', 'jpeg', 'png', 'webp', 'heic', 'heif'];
 
+const APPS_SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbydApJpw28lEfSdQCHiueX346ae_-mNHq_KUi6HzwhRnaiW1abQU1hO1DRyPYkuPvMK/exec';
+
+const MAX_FILE_SIZE = 8 * 1024 * 1024;
+
+const ALLOWED_FILE_EXTENSIONS = [
+  'p7s',
+  'jpg',
+  'jpeg',
+  'png',
+  'webp',
+];
+
+/* Мобільне меню */
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
 
@@ -23,6 +33,7 @@ if (navToggle && nav) {
   });
 }
 
+/* Форма приєднання */
 const form = document.querySelector('#join-form');
 const fileField = document.querySelector('#signed-file');
 const submitButton = document.querySelector('#submit-button');
@@ -31,12 +42,14 @@ const formStartedAt = Date.now();
 
 function showStatus(message, type) {
   if (!formStatus) return;
+
   formStatus.textContent = message;
   formStatus.className = `form-status visible ${type}`;
 }
 
 function clearStatus() {
   if (!formStatus) return;
+
   formStatus.textContent = '';
   formStatus.className = 'form-status';
 }
@@ -45,14 +58,33 @@ function getFileExtension(filename) {
   return filename.split('.').pop()?.toLowerCase() || '';
 }
 
+function getMimeTypeFromExtension(filename) {
+  const extension = getFileExtension(filename);
+
+  const mimeTypes = {
+    p7s: 'application/pkcs7-signature',
+    jpg: 'image/jpeg',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+    webp: 'image/webp',
+  };
+
+  return mimeTypes[extension] || 'application/octet-stream';
+}
+
 function validateFile(file) {
   if (!file) {
-    throw new Error('Додайте підписану заяву у форматі .p7s або її чітку копію.');
+    throw new Error(
+      'Додайте підписану заяву у форматі .p7s або її чітку копію.'
+    );
   }
 
   const extension = getFileExtension(file.name);
+
   if (!ALLOWED_FILE_EXTENSIONS.includes(extension)) {
-    throw new Error('Додайте файл .p7s або зображення у форматі JPG, PNG, WEBP, HEIC чи HEIF.');
+    throw new Error(
+      'Додайте файл .p7s або зображення у форматі JPG, PNG чи WEBP.'
+    );
   }
 
   if (file.size > MAX_FILE_SIZE) {
@@ -63,11 +95,16 @@ function validateFile(file) {
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
+
     reader.onload = () => {
       const result = String(reader.result || '');
       resolve(result.includes(',') ? result.split(',')[1] : result);
     };
-    reader.onerror = () => reject(new Error('Не вдалося прочитати вибраний файл.'));
+
+    reader.onerror = () => {
+      reject(new Error('Не вдалося прочитати вибраний файл.'));
+    };
+
     reader.readAsDataURL(file);
   });
 }
@@ -75,21 +112,22 @@ function fileToBase64(file) {
 async function buildPayload(formElement) {
   const data = new FormData(formElement);
   const file = fileField?.files?.[0];
+
   validateFile(file);
 
   return {
-    consentPublication: data.get('consent_publication') === 'on',
-    consentData: data.get('consent_data') === 'on',
+    personalDataConsent: data.get('consent_data') === 'on',
+    joinConsent: data.get('consent_publication') === 'on',
+
+    fileName: file.name,
+    mimeType: getMimeTypeFromExtension(file.name),
+    fileSize: file.size,
+    fileData: await fileToBase64(file),
+
     website: String(data.get('website') || '').trim(),
     pageUrl: window.location.href,
     startedAt: formStartedAt,
     submittedAt: Date.now(),
-    file: {
-      name: file.name,
-      type: file.type || 'application/octet-stream',
-      size: file.size,
-      base64: await fileToBase64(file),
-    },
   };
 }
 
@@ -102,12 +140,16 @@ form?.addEventListener('submit', async (event) => {
     return;
   }
 
-  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.includes('PASTE_GOOGLE')) {
-    showStatus('Форма ще не підключена до Google Таблиці. Спочатку вставте URL вебзастосунку в script.js.', 'error');
+  if (!APPS_SCRIPT_URL || !APPS_SCRIPT_URL.endsWith('/exec')) {
+    showStatus(
+      'Форма ще не підключена до Google Apps Script.',
+      'error'
+    );
     return;
   }
 
-  const originalButtonText = submitButton?.textContent || 'Надіслати заяву';
+  const originalButtonText =
+    submitButton?.textContent || 'Надіслати заяву';
 
   try {
     if (submitButton) {
@@ -116,9 +158,12 @@ form?.addEventListener('submit', async (event) => {
     }
 
     const payload = await buildPayload(form);
+
     const response = await fetch(APPS_SCRIPT_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      headers: {
+        'Content-Type': 'text/plain;charset=utf-8',
+      },
       body: JSON.stringify(payload),
       redirect: 'follow',
     });
@@ -129,18 +174,33 @@ form?.addEventListener('submit', async (event) => {
     try {
       result = JSON.parse(rawResponse);
     } catch {
-      throw new Error('Сервер повернув некоректну відповідь. Перевірте налаштування Google Apps Script.');
+      throw new Error(
+        'Сервер повернув некоректну відповідь. Перевірте налаштування Google Apps Script.'
+      );
     }
 
-    if (!result.ok) {
-      throw new Error(result.message || 'Не вдалося надіслати заяву.');
+    if (!result.success) {
+      throw new Error(
+        result.message || 'Не вдалося надіслати заяву.'
+      );
     }
 
     form.reset();
-    showStatus('Дякуємо. Підписану заяву успішно надіслано.', 'success');
+
+    showStatus(
+      result.message ||
+        'Дякуємо. Підписану заяву успішно надіслано.',
+      'success'
+    );
   } catch (error) {
     console.error(error);
-    showStatus(error instanceof Error ? error.message : 'Сталася помилка під час надсилання. Спробуйте ще раз.', 'error');
+
+    showStatus(
+      error instanceof Error
+        ? error.message
+        : 'Сталася помилка під час надсилання. Спробуйте ще раз.',
+      'error'
+    );
   } finally {
     if (submitButton) {
       submitButton.disabled = false;
@@ -151,33 +211,50 @@ form?.addEventListener('submit', async (event) => {
 
 fileField?.addEventListener('change', () => {
   clearStatus();
+
   const file = fileField.files?.[0];
 
   try {
     validateFile(file);
   } catch (error) {
     fileField.value = '';
-    showStatus(error instanceof Error ? error.message : 'Недопустимий файл.', 'error');
+
+    showStatus(
+      error instanceof Error
+        ? error.message
+        : 'Недопустимий файл.',
+      'error'
+    );
   }
 });
 
 /* PDF-модальні вікна: резолюція та правовий бриф */
 const modalOpeners = document.querySelectorAll('[data-open-modal]');
 const modalClosers = document.querySelectorAll('[data-close-modal]');
+
 let activeModal = null;
 let lastFocusedElement = null;
 
 function getModalFocusableElements(modal) {
-  return [...modal.querySelectorAll(
-    'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
-  )].filter((element) => element instanceof HTMLElement && element.offsetParent !== null);
+  return [
+    ...modal.querySelectorAll(
+      'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
+    ),
+  ].filter(
+    (element) =>
+      element instanceof HTMLElement &&
+      element.offsetParent !== null
+  );
 }
 
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
+
   if (!(modal instanceof HTMLElement)) return;
 
-  if (activeModal && activeModal !== modal) closeModal(activeModal, false);
+  if (activeModal && activeModal !== modal) {
+    closeModal(activeModal, false);
+  }
 
   lastFocusedElement = document.activeElement;
   activeModal = modal;
@@ -186,8 +263,12 @@ function openModal(modalId) {
 
   requestAnimationFrame(() => {
     modal.classList.add('is-open');
+
     const closeButton = modal.querySelector('.pdf-modal-close');
-    if (closeButton instanceof HTMLElement) closeButton.focus();
+
+    if (closeButton instanceof HTMLElement) {
+      closeButton.focus();
+    }
   });
 }
 
@@ -199,27 +280,47 @@ function closeModal(modal = activeModal, restoreFocus = true) {
 
   window.setTimeout(() => {
     modal.hidden = true;
-    if (activeModal === modal) activeModal = null;
-    if (restoreFocus && lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
+
+    if (activeModal === modal) {
+      activeModal = null;
+    }
+
+    if (
+      restoreFocus &&
+      lastFocusedElement instanceof HTMLElement
+    ) {
+      lastFocusedElement.focus();
+    }
   }, 180);
 }
 
 modalOpeners.forEach((button) => {
   button.addEventListener('click', () => {
     const modalId = button.getAttribute('data-open-modal');
-    if (modalId) openModal(modalId);
+
+    if (modalId) {
+      openModal(modalId);
+    }
   });
 });
 
 modalClosers.forEach((button) => {
   button.addEventListener('click', () => {
     const modal = button.closest('.pdf-modal');
-    if (modal instanceof HTMLElement) closeModal(modal);
+
+    if (modal instanceof HTMLElement) {
+      closeModal(modal);
+    }
   });
 });
 
 document.addEventListener('keydown', (event) => {
-  if (!(activeModal instanceof HTMLElement) || activeModal.hidden) return;
+  if (
+    !(activeModal instanceof HTMLElement) ||
+    activeModal.hidden
+  ) {
+    return;
+  }
 
   if (event.key === 'Escape') {
     closeModal(activeModal);
@@ -227,16 +328,24 @@ document.addEventListener('keydown', (event) => {
   }
 
   if (event.key !== 'Tab') return;
+
   const focusable = getModalFocusableElements(activeModal);
+
   if (!focusable.length) return;
 
   const first = focusable[0];
   const last = focusable[focusable.length - 1];
 
-  if (event.shiftKey && document.activeElement === first) {
+  if (
+    event.shiftKey &&
+    document.activeElement === first
+  ) {
     event.preventDefault();
     last.focus();
-  } else if (!event.shiftKey && document.activeElement === last) {
+  } else if (
+    !event.shiftKey &&
+    document.activeElement === last
+  ) {
     event.preventDefault();
     first.focus();
   }
