@@ -2,7 +2,7 @@
  * Вставте URL розгорнутого Google Apps Script Web App нижче.
  * Приклад: https://script.google.com/macros/s/AKfycb.../exec
  */
-const APPS_SCRIPT_URL = 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydApJpw28lEfSdQCHiueX346ae_-mNHq_KUi6HzwhRnaiW1abQU1hO1DRyPYkuPvMK/exec';
 const MAX_FILE_SIZE = 8 * 1024 * 1024;
 const ALLOWED_FILE_EXTENSIONS = ['p7s', 'jpg', 'jpeg', 'png', 'webp', 'heic', 'heif'];
 
