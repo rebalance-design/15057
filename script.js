@@ -9,6 +9,7 @@ const MAX_FILE_SIZE = 8 * 1024 * 1024;
 
 const ALLOWED_FILE_EXTENSIONS = [
   'p7s',
+  'pdf',
   'jpg',
   'jpeg',
   'png',
@@ -63,6 +64,7 @@ function getMimeTypeFromExtension(filename) {
 
   const mimeTypes = {
     p7s: 'application/pkcs7-signature',
+    pdf: 'application/pdf',
     jpg: 'image/jpeg',
     jpeg: 'image/jpeg',
     png: 'image/png',
@@ -83,7 +85,7 @@ function validateFile(file) {
 
   if (!ALLOWED_FILE_EXTENSIONS.includes(extension)) {
     throw new Error(
-      'Додайте файл .p7s або зображення у форматі JPG, PNG чи WEBP.'
+      'Додайте файл .p7s, PDF або зображення у форматі JPG, PNG чи WEBP.'
     );
   }
 
