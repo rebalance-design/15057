@@ -215,3 +215,68 @@ fileField?.addEventListener('change', () => {
 });
 
 updatePreview();
+
+
+/* PDF modal: спільна резолюція */
+const resolutionModal = document.querySelector('#resolution-modal');
+const resolutionOpeners = document.querySelectorAll('[data-open-resolution]');
+const resolutionClosers = document.querySelectorAll('[data-close-resolution]');
+let lastFocusedElement = null;
+
+function getModalFocusableElements() {
+  if (!resolutionModal) return [];
+  return [...resolutionModal.querySelectorAll(
+    'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
+  )].filter((element) => element instanceof HTMLElement && element.offsetParent !== null);
+}
+
+function openResolutionModal() {
+  if (!resolutionModal) return;
+  lastFocusedElement = document.activeElement;
+  resolutionModal.hidden = false;
+  document.body.classList.add('modal-open');
+
+  requestAnimationFrame(() => {
+    resolutionModal.classList.add('is-open');
+    const closeButton = resolutionModal.querySelector('.pdf-modal-close');
+    if (closeButton instanceof HTMLElement) closeButton.focus();
+  });
+}
+
+function closeResolutionModal() {
+  if (!resolutionModal || resolutionModal.hidden) return;
+  resolutionModal.classList.remove('is-open');
+  document.body.classList.remove('modal-open');
+
+  window.setTimeout(() => {
+    resolutionModal.hidden = true;
+    if (lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
+  }, 180);
+}
+
+resolutionOpeners.forEach((button) => button.addEventListener('click', openResolutionModal));
+resolutionClosers.forEach((button) => button.addEventListener('click', closeResolutionModal));
+
+document.addEventListener('keydown', (event) => {
+  if (!resolutionModal || resolutionModal.hidden) return;
+
+  if (event.key === 'Escape') {
+    closeResolutionModal();
+    return;
+  }
+
+  if (event.key !== 'Tab') return;
+  const focusable = getModalFocusableElements();
+  if (!focusable.length) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});
