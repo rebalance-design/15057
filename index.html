@@ -23,9 +23,9 @@
 
       <nav class="site-nav" aria-label="Головна навігація">
         <a href="#about">Про нас</a>
-        <a href="#media">Матеріали в медіа</a>
+        <!-- Тимчасово приховано до наповнення: <a href="#media">Матеріали в медіа</a> -->
         <a href="#bill">Законопроєкт</a>
-        <a href="#stories">Наші історії</a>
+        <!-- Тимчасово приховано до наповнення: <a href="#stories">Наші історії</a> -->
         <a class="nav-cta nav-cta-primary" href="#join">Приєднатися</a>
       </nav>
     </div>
@@ -43,7 +43,7 @@
           <p class="lead">17.07.2026 відбулося публічне обговорення законопроєкту №15057 за участю родин військовослужбовців, правозахисної, медичної, реабілітаційної, соціальної та експертної спільнот. За результатами зустрічі ми ухвалили спільну резолюцію на підтримку рівного державного захисту дітей з&nbsp;інвалідністю незалежно від статусу їхніх&nbsp;батьків.</p>
 
           <div class="hero-actions">
-            <button class="button primary" type="button" data-open-resolution>Читати резолюцію</button>
+            <button class="button primary" type="button" data-open-modal="resolution-modal">Читати резолюцію</button>
             <a class="button secondary" href="#join">Приєднатися</a>
           </div>
 
@@ -72,64 +72,21 @@
       <div class="container form-only-layout">
         <div class="form-section-intro">
           <p class="eyebrow">Приєднатися до резолюції</p>
-          <h2>Дані для заяви-приєднання</h2>
-          <p>Заповніть форму, щоб приєднатися до спільної публічної резолюції на підтримку рівного державного захисту дітей з&nbsp;інвалідністю.</p>
+          <h2>Надішліть підписану заяву</h2>
+          <p>Завантажте шаблон, внесіть усі необхідні дані, підпишіть заяву одним із двох способів і додайте готовий файл до форми.</p>
         </div>
 
         <div class="form-panel">
-
           <form id="join-form" novalidate>
             <p class="hidden" aria-hidden="true">
               <label>Не заповнювати <input name="website" tabindex="-1" autocomplete="off" /></label>
             </p>
 
-            <label>
-              ПІБ *
-              <input required type="text" name="name" id="name" autocomplete="name" placeholder="Шевченко Тарас Григорович" maxlength="120" />
-            </label>
-
-            <label>
-              Організація / спільнота
-              <input type="text" name="organization" id="organization" autocomplete="organization" placeholder="Назва організації, установи або спільноти" maxlength="180" />
-            </label>
-
-            <label>
-              Посада / статус *
-              <input required type="text" name="role" id="role" placeholder="Юрист, лікарка, представник ГО, член родини" maxlength="180" />
-            </label>
-
-            <label>
-              Email *
-              <input required type="email" name="email" autocomplete="email" placeholder="your@email.com" maxlength="160" />
-            </label>
-
-            <label>
-              Телефон
-              <input type="tel" name="phone" autocomplete="tel" placeholder="+380 67 123 45 67" maxlength="40" />
-            </label>
-
-            <label>
-              Формат приєднання
-              <select name="join_format" id="join-format">
-                <option value="як фізична особа">як фізична особа</option>
-                <option value="від імені організації">від імені організації</option>
-                <option value="як експерт / експертка">як експерт / експертка</option>
-                <option value="як представник / представниця державної або комунальної установи">як представник / представниця установи</option>
-                <option value="як родина дитини з інвалідністю">як родина дитини з інвалідністю</option>
-                <option value="як медіапартнер / медіапартнерка">як медіапартнер / медіапартнерка</option>
-              </select>
-            </label>
-
-            <label class="field-full">
-              Коментар або пропозиція
-              <textarea name="comment" rows="4" placeholder="Короткий коментар, уточнення або пропозиція" maxlength="2000"></textarea>
-            </label>
-
             <div class="statement-preparation field-full">
               <div class="statement-preparation-head">
                 <div>
-                  <strong>Підготуйте та підпишіть заяву-приєднання</strong>
-                  <p>Завантажте шаблон, заповніть його, підпишіть і додайте копію до форми.</p>
+                  <strong>Шаблон заяви-приєднання</strong>
+                  <p>Усі дані заповнюються один раз — безпосередньо в заяві.</p>
                 </div>
                 <a class="button secondary statement-template-link" href="assets/join_template.docx" download>Завантажити шаблон заяви (.docx)</a>
               </div>
@@ -137,22 +94,23 @@
               <details class="signing-guide">
                 <summary>Як заповнити й підписати заяву</summary>
                 <div class="signing-guide-content">
+                  <p class="signing-choice"><strong>Оберіть лише ОДИН із двох способів підписання:</strong></p>
                   <ol>
-                    <li>Завантажте шаблон, внесіть ПІБ, посаду або статус, організацію (за наявності), контактні дані та дату.</li>
-                    <li>Якщо приєднуєтеся від імені організації, зазначте посаду та підставу повноважень представляти її.</li>
-                    <li><b>Власноручний підпис:</b> роздрукуйте заяву, підпишіть її та зробіть чітке фото або скан усієї сторінки.</li>
-                    <li><b>КЕП:</b> підпишіть заповнений документ кваліфікованим електронним підписом і завантажте отриманий файл <code>.p7s</code>. Якщо сервіс створив відокремлений підпис, збережіть також вихідний документ для можливої перевірки.</li>
-                    <li>Переконайтеся, що ПІБ у заяві збігається з ПІБ у формі, а текст і підпис добре читаються.</li>
+                    <li>Завантажте шаблон і внесіть у нього ПІБ, повну поштову адресу, телефон, електронну пошту, посаду або статус та назву організації — за наявності.</li>
+                    <li><b>Власноручний підпис:</b> роздрукуйте заповнену заяву, поставте дату й підпис, після чого зробіть чітке фото або скан усієї сторінки.</li>
+                    <li><b>Електронний підпис:</b> не вставляйте зображення підпису в документ. Збережіть заповнену заяву та підпишіть файл електронним підписом через <a href="https://diia.gov.ua/services/pidpisannya-dokumentiv" target="_blank" rel="noopener">сервіс підписання документів на порталі Дія</a>. До форми додайте отриманий файл <code>.p7s</code>.</li>
+                    <li>Не потрібно підписувати заяву і власноруч, і електронним підписом одночасно.</li>
+                    <li>Перед надсиланням перевірте, що всі дані заповнені, а текст і підпис добре читаються.</li>
                   </ol>
-                  <p class="signing-note">Контактні дані та копія підпису не публікуються; вони використовуються для перевірки заяви та комунікації щодо резолюції.</p>
+                  <p class="signing-note"><span class="notice-icon" aria-hidden="true">!</span><span>Контактні дані, адреса, файл заяви та підпис не публікуються. Вони використовуються лише для перевірки заяви та комунікації щодо резолюції.</span></p>
                 </div>
               </details>
             </div>
 
             <label class="field-full">
-              Копія підписаної заяви *
+              Підписана заява у форматі .p7s або копія підписаної заяви *
               <input required id="signed-file" type="file" name="signed_file" accept=".p7s,image/jpeg,image/png,image/webp,image/heic,image/heif" />
-              <small class="field-help">Обов’язково. Додайте файл .p7s або чітке зображення у форматі JPG, PNG, WEBP, HEIC чи HEIF — до 8 МБ.</small>
+              <small class="field-help">Додайте один файл: .p7s — для заяви з електронним підписом; JPG, PNG, WEBP, HEIC або HEIF — для чіткого фото чи скану заяви з власноручним підписом. Максимальний розмір — 8 МБ.</small>
             </label>
 
             <label class="checkbox field-full">
@@ -165,7 +123,7 @@
               <span>Надаю згоду на обробку переданих персональних даних виключно для оформлення приєднання до резолюції та комунікації щодо цієї ініціативи. *</span>
             </label>
 
-            <button class="button primary full field-full" type="submit" id="submit-button">Надіслати дані</button>
+            <button class="button primary full field-full" type="submit" id="submit-button">Надіслати заяву</button>
             <div class="form-status field-full" id="form-status" role="status" aria-live="polite"></div>
           </form>
         </div>
@@ -196,6 +154,7 @@
       </div>
     </section>
 
+    <!-- ТИМЧАСОВО ПРИХОВАНО: розділ «Матеріали в медіа»
     <section class="section section-soft" id="media">
       <div class="container">
         <p class="eyebrow">Матеріали в медіа</p>
@@ -227,6 +186,8 @@
       </div>
     </section>
 
+    КІНЕЦЬ ТИМЧАСОВО ПРИХОВАНОГО РОЗДІЛУ -->
+
     <section class="section" id="bill">
       <div class="container two-col align-start">
         <div>
@@ -242,15 +203,17 @@
         </div>
 
         <aside class="doc-card">
-          <span>базовий документ</span>
-          <h3>Правовий бриф щодо законопроєкту №15057</h3>
-          <p>Короткий юридичний документ про дискримінацію дітей з інвалідністю залежно від статусу їхніх батьків.</p>
-          <a class="button secondary full" href="assets/legal-brief-15057.pdf" target="_blank" rel="noopener">Відкрити правовий бриф</a>
-          <a class="button ghost full" href="#">Додати посилання на картку законопроєкту</a>
+          <span>базові документи</span>
+          <h3>Матеріали щодо законопроєкту №15057</h3>
+          <p>Офіційна картка законопроєкту, правовий аналіз і петиція на його підтримку.</p>
+          <a class="button ghost full" href="https://itd.rada.gov.ua/billinfo/Bills/Card/69674" target="_blank" rel="noopener">Картка законопроєкту на сайті ВРУ</a>
+          <button class="button secondary full" type="button" data-open-modal="law-brief-modal">Відкрити правовий бриф</button>
+          <a class="button ghost full" href="https://itd.rada.gov.ua/petitions/Petition/Index/13563" target="_blank" rel="noopener">Петиція щодо законопроєкту №15057</a>
         </aside>
       </div>
     </section>
 
+    <!-- ТИМЧАСОВО ПРИХОВАНО: розділ «Наші історії»
     <section class="section section-soft" id="stories">
       <div class="container">
         <p class="eyebrow">Наші історії</p>
@@ -268,6 +231,8 @@
       </div>
     </section>
 
+    КІНЕЦЬ ТИМЧАСОВО ПРИХОВАНОГО РОЗДІЛУ -->
+
     <section class="section final-cta">
       <div class="container narrow">
         <p class="eyebrow">Ключовий висновок</p>
@@ -279,7 +244,7 @@
 
 
   <div class="pdf-modal" id="resolution-modal" role="dialog" aria-modal="true" aria-labelledby="resolution-modal-title" hidden>
-    <button class="pdf-modal-backdrop" type="button" data-close-resolution tabindex="-1" aria-label="Закрити документ"></button>
+    <button class="pdf-modal-backdrop" type="button" data-close-modal tabindex="-1" aria-label="Закрити документ"></button>
 
     <div class="pdf-modal-dialog" role="document">
       <header class="pdf-modal-header">
@@ -291,7 +256,7 @@
         <div class="pdf-modal-actions">
           <a class="pdf-modal-link pdf-open-link" href="assets/resolution-15057.pdf" target="_blank" rel="noopener">Відкрити окремо</a>
           <a class="pdf-modal-link pdf-download-link" href="assets/resolution-15057.pdf" download>Завантажити</a>
-          <button class="pdf-modal-close" type="button" data-close-resolution aria-label="Закрити резолюцію">×</button>
+          <button class="pdf-modal-close" type="button" data-close-modal aria-label="Закрити резолюцію">×</button>
         </div>
       </header>
 
@@ -300,6 +265,34 @@
           class="pdf-frame"
           src="assets/resolution-15057.pdf#view=FitH&toolbar=1&navpanes=0"
           title="Спільна публічна резолюція щодо законопроєкту №15057"
+        ></iframe>
+        <p class="pdf-mobile-note">Якщо документ не відображається у вашому браузері, натисніть «Відкрити окремо» у верхній панелі.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdf-modal" id="law-brief-modal" role="dialog" aria-modal="true" aria-labelledby="law-brief-modal-title" hidden>
+    <button class="pdf-modal-backdrop" type="button" data-close-modal tabindex="-1" aria-label="Закрити документ"></button>
+
+    <div class="pdf-modal-dialog" role="document">
+      <header class="pdf-modal-header">
+        <div>
+          <p class="pdf-modal-label">Документ · PDF</p>
+          <h2 id="law-brief-modal-title">Правовий бриф щодо законопроєкту №15057</h2>
+        </div>
+
+        <div class="pdf-modal-actions">
+          <a class="pdf-modal-link pdf-open-link" href="assets/law_brief_15057.pdf" target="_blank" rel="noopener">Відкрити окремо</a>
+          <a class="pdf-modal-link pdf-download-link" href="assets/law_brief_15057.pdf" download>Завантажити</a>
+          <button class="pdf-modal-close" type="button" data-close-modal aria-label="Закрити правовий бриф">×</button>
+        </div>
+      </header>
+
+      <div class="pdf-modal-body">
+        <iframe
+          class="pdf-frame"
+          src="assets/law_brief_15057.pdf#view=FitH&toolbar=1&navpanes=0"
+          title="Правовий бриф щодо законопроєкту №15057"
         ></iframe>
         <p class="pdf-mobile-note">Якщо документ не відображається у вашому браузері, натисніть «Відкрити окремо» у верхній панелі.</p>
       </div>
@@ -321,7 +314,7 @@
       </div>
       <div>
         <h3>Соцмережі</h3>
-        <p class="social"><a href="#">Facebook</a><a href="#">Instagram</a><a href="#">Threads</a><a href="#">TikTok</a><a href="#">YouTube</a></p>
+        <p class="social"><a href="https://www.facebook.com/15057pravo" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/15057.ua/" target="_blank" rel="noopener">Instagram</a><a href="https://www.threads.com/@15057.ua" target="_blank" rel="noopener">Threads</a><a href="https://www.tiktok.com/@15057.ua" target="_blank" rel="noopener">TikTok</a><a href="https://www.youtube.com/@pravo15057" target="_blank" rel="noopener">YouTube</a></p>
       </div>
     </div>
   </footer>

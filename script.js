@@ -24,32 +24,10 @@ if (navToggle && nav) {
 }
 
 const form = document.querySelector('#join-form');
-const nameField = document.querySelector('#name');
-const orgField = document.querySelector('#organization');
-const roleField = document.querySelector('#role');
-const formatField = document.querySelector('#join-format');
 const fileField = document.querySelector('#signed-file');
 const submitButton = document.querySelector('#submit-button');
 const formStatus = document.querySelector('#form-status');
 const formStartedAt = Date.now();
-
-function buildStatement() {
-  const name = nameField?.value.trim() || '________________________';
-  const org = orgField?.value.trim();
-  const role = roleField?.value.trim();
-  const format = formatField?.value || 'як підписант / підписантка';
-  let identity = name;
-  const details = [role, org].filter(Boolean).join(', ');
-
-  if (details) identity += `, ${details}`;
-
-  return `Я, ${identity}, підтверджую ознайомлення з повним текстом публічної резолюції за результатами обговорення законопроєкту №15057 та добровільно приєднуюся до неї ${format}.
-
-Підтримую викладені в резолюції висновки, пропозиції та звернення щодо забезпечення рівного державного захисту дітей з інвалідністю незалежно від статусу їхніх батьків.
-
-Даю згоду на включення мого імені / назви організації та посади або статусу до переліку підписантів резолюції.`;
-}
-
 
 function showStatus(message, type) {
   if (!formStatus) return;
@@ -69,7 +47,7 @@ function getFileExtension(filename) {
 
 function validateFile(file) {
   if (!file) {
-    throw new Error('Додайте копію підписаної заяви.');
+    throw new Error('Додайте підписану заяву у форматі .p7s або її чітку копію.');
   }
 
   const extension = getFileExtension(file.name);
@@ -99,34 +77,20 @@ async function buildPayload(formElement) {
   const file = fileField?.files?.[0];
   validateFile(file);
 
-  const payload = {
-    name: String(data.get('name') || '').trim(),
-    organization: String(data.get('organization') || '').trim(),
-    role: String(data.get('role') || '').trim(),
-    email: String(data.get('email') || '').trim(),
-    phone: String(data.get('phone') || '').trim(),
-    joinFormat: String(data.get('join_format') || '').trim(),
-    comment: String(data.get('comment') || '').trim(),
+  return {
     consentPublication: data.get('consent_publication') === 'on',
     consentData: data.get('consent_data') === 'on',
     website: String(data.get('website') || '').trim(),
-    statement: buildStatement(),
     pageUrl: window.location.href,
     startedAt: formStartedAt,
     submittedAt: Date.now(),
-    file: null,
-  };
-
-  if (file) {
-    payload.file = {
+    file: {
       name: file.name,
       type: file.type || 'application/octet-stream',
       size: file.size,
       base64: await fileToBase64(file),
-    };
-  }
-
-  return payload;
+    },
+  };
 }
 
 form?.addEventListener('submit', async (event) => {
@@ -143,7 +107,7 @@ form?.addEventListener('submit', async (event) => {
     return;
   }
 
-  const originalButtonText = submitButton?.textContent || 'Надіслати дані';
+  const originalButtonText = submitButton?.textContent || 'Надіслати заяву';
 
   try {
     if (submitButton) {
@@ -173,7 +137,7 @@ form?.addEventListener('submit', async (event) => {
     }
 
     form.reset();
-    showStatus('Дякуємо. Ваші дані успішно надіслано.', 'success');
+    showStatus('Дякуємо. Підписану заяву успішно надіслано.', 'success');
   } catch (error) {
     console.error(error);
     showStatus(error instanceof Error ? error.message : 'Сталася помилка під час надсилання. Спробуйте ще раз.', 'error');
@@ -197,57 +161,73 @@ fileField?.addEventListener('change', () => {
   }
 });
 
-
-/* PDF modal: спільна резолюція */
-const resolutionModal = document.querySelector('#resolution-modal');
-const resolutionOpeners = document.querySelectorAll('[data-open-resolution]');
-const resolutionClosers = document.querySelectorAll('[data-close-resolution]');
+/* PDF-модальні вікна: резолюція та правовий бриф */
+const modalOpeners = document.querySelectorAll('[data-open-modal]');
+const modalClosers = document.querySelectorAll('[data-close-modal]');
+let activeModal = null;
 let lastFocusedElement = null;
 
-function getModalFocusableElements() {
-  if (!resolutionModal) return [];
-  return [...resolutionModal.querySelectorAll(
+function getModalFocusableElements(modal) {
+  return [...modal.querySelectorAll(
     'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
   )].filter((element) => element instanceof HTMLElement && element.offsetParent !== null);
 }
 
-function openResolutionModal() {
-  if (!resolutionModal) return;
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (!(modal instanceof HTMLElement)) return;
+
+  if (activeModal && activeModal !== modal) closeModal(activeModal, false);
+
   lastFocusedElement = document.activeElement;
-  resolutionModal.hidden = false;
+  activeModal = modal;
+  modal.hidden = false;
   document.body.classList.add('modal-open');
 
   requestAnimationFrame(() => {
-    resolutionModal.classList.add('is-open');
-    const closeButton = resolutionModal.querySelector('.pdf-modal-close');
+    modal.classList.add('is-open');
+    const closeButton = modal.querySelector('.pdf-modal-close');
     if (closeButton instanceof HTMLElement) closeButton.focus();
   });
 }
 
-function closeResolutionModal() {
-  if (!resolutionModal || resolutionModal.hidden) return;
-  resolutionModal.classList.remove('is-open');
+function closeModal(modal = activeModal, restoreFocus = true) {
+  if (!(modal instanceof HTMLElement) || modal.hidden) return;
+
+  modal.classList.remove('is-open');
   document.body.classList.remove('modal-open');
 
   window.setTimeout(() => {
-    resolutionModal.hidden = true;
-    if (lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
+    modal.hidden = true;
+    if (activeModal === modal) activeModal = null;
+    if (restoreFocus && lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
   }, 180);
 }
 
-resolutionOpeners.forEach((button) => button.addEventListener('click', openResolutionModal));
-resolutionClosers.forEach((button) => button.addEventListener('click', closeResolutionModal));
+modalOpeners.forEach((button) => {
+  button.addEventListener('click', () => {
+    const modalId = button.getAttribute('data-open-modal');
+    if (modalId) openModal(modalId);
+  });
+});
+
+modalClosers.forEach((button) => {
+  button.addEventListener('click', () => {
+    const modal = button.closest('.pdf-modal');
+    if (modal instanceof HTMLElement) closeModal(modal);
+  });
+});
 
 document.addEventListener('keydown', (event) => {
-  if (!resolutionModal || resolutionModal.hidden) return;
+  if (!(activeModal instanceof HTMLElement) || activeModal.hidden) return;
 
   if (event.key === 'Escape') {
-    closeResolutionModal();
+    closeModal(activeModal);
     return;
   }
 
   if (event.key !== 'Tab') return;
-  const focusable = getModalFocusableElements();
+  const focusable = getModalFocusableElements(activeModal);
   if (!focusable.length) return;
 
   const first = focusable[0];

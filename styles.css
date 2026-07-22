@@ -956,3 +956,51 @@ body.modal-open {
     width: 100%;
   }
 }
+
+/* =========================
+   Form simplification v9
+   ========================= */
+.form-only-layout {
+  max-width: 860px;
+}
+
+#join-form {
+  grid-template-columns: 1fr;
+}
+
+.signing-choice {
+  margin: 0 0 12px;
+  color: var(--navy);
+}
+
+.signing-guide-content a {
+  color: var(--gold);
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
+.signing-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.notice-icon {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  margin-top: 1px;
+  border: 1px solid rgba(184, 148, 77, 0.62);
+  border-radius: 50%;
+  color: var(--gold);
+  background: rgba(184, 148, 77, 0.08);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.doc-card .button {
+  text-align: center;
+}
