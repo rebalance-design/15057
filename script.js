@@ -66,13 +66,13 @@ function getMimeTypeFromExtension(filename) {
 
   const mimeTypes = {
     p7s: 'application/pkcs7-signature',
-  pdf: 'application/pdf',
-  jpg: 'image/jpeg',
-  jpeg: 'image/jpeg',
-  png: 'image/png',
-  webp: 'image/webp',
-  heic: 'image/heic',
-  heif: 'image/heif',
+    pdf: 'application/pdf',
+    jpg: 'image/jpeg',
+    jpeg: 'image/jpeg',
+    png: 'image/png',
+    webp: 'image/webp',
+    heic: 'image/heic',
+    heif: 'image/heif',
   };
 
   return mimeTypes[extension] || 'application/octet-stream';
@@ -81,7 +81,7 @@ function getMimeTypeFromExtension(filename) {
 function validateFile(file) {
   if (!file) {
     throw new Error(
-      'Додайте підписану заяву у форматі .p7s або її чітку копію.'
+      'Додайте підписану заяву у форматі .p7s, PDF або її чітку копію.'
     );
   }
 
