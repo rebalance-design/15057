@@ -14,6 +14,8 @@ const ALLOWED_FILE_EXTENSIONS = [
   'jpeg',
   'png',
   'webp',
+  'heic',
+  'heif',
 ];
 
 /* Мобільне меню */
@@ -64,11 +66,13 @@ function getMimeTypeFromExtension(filename) {
 
   const mimeTypes = {
     p7s: 'application/pkcs7-signature',
-    pdf: 'application/pdf',
-    jpg: 'image/jpeg',
-    jpeg: 'image/jpeg',
-    png: 'image/png',
-    webp: 'image/webp',
+  pdf: 'application/pdf',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  png: 'image/png',
+  webp: 'image/webp',
+  heic: 'image/heic',
+  heif: 'image/heif',
   };
 
   return mimeTypes[extension] || 'application/octet-stream';
@@ -85,7 +89,7 @@ function validateFile(file) {
 
   if (!ALLOWED_FILE_EXTENSIONS.includes(extension)) {
     throw new Error(
-      'Додайте файл .p7s, PDF або зображення у форматі JPG, PNG чи WEBP.'
+      'Додайте файл .p7s, PDF або зображення у форматі JPG, PNG, WEBP, HEIC чи HEIF.'
     );
   }
 
