@@ -102,12 +102,6 @@ button, input, select, textarea { font: inherit; }
   border-top: 1px solid rgba(184, 148, 77, 0.13);
   border-bottom: 1px solid rgba(184, 148, 77, 0.13);
 }
-#about {
-  padding: 0;
-} 
-.section.final-cta {
-  padding-top: 0;
-}
 
 .hero {
   position: relative;
@@ -2147,5 +2141,116 @@ section[id] {
   #bill.section,
   .final-cta.section {
     padding-top: 32px;
+  }
+}
+
+
+/* =========================
+   Thank-you page
+   ========================= */
+
+.thank-you-main {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+  padding: 142px 0 84px;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(184, 148, 77, 0.12), transparent 34%),
+    var(--cream);
+}
+
+.thank-you-shell {
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.thank-you-card {
+  padding: clamp(34px, 7vw, 68px);
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 248, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.thank-you-icon {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 24px;
+  border: 1px solid rgba(184, 148, 77, 0.45);
+  border-radius: 50%;
+  background: rgba(184, 148, 77, 0.1);
+  color: var(--gold);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.thank-you-card .eyebrow {
+  margin-bottom: 14px;
+}
+
+.thank-you-card h1 {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: clamp(36px, 6vw, 58px);
+}
+
+.thank-you-lead {
+  max-width: 650px;
+  margin: 22px auto 0;
+  color: var(--navy2);
+  font-size: clamp(17px, 2.4vw, 20px);
+  line-height: 1.65;
+}
+
+.thank-you-note {
+  max-width: 620px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.thank-you-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+  .thank-you-main {
+    min-height: 68vh;
+    padding: 108px 0 58px;
+  }
+
+  .thank-you-shell {
+    width: min(100% - 28px, 760px);
+  }
+
+  .thank-you-card {
+    padding: 30px 20px;
+  }
+
+  .thank-you-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 20px;
+    font-size: 29px;
+  }
+
+  .thank-you-card h1 {
+    font-size: clamp(31px, 10vw, 42px);
+  }
+
+  .thank-you-actions {
+    flex-direction: column;
+  }
+
+  .thank-you-actions .button {
+    width: 100%;
   }
 }

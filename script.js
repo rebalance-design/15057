@@ -226,12 +226,7 @@ form?.addEventListener('submit', async (event) => {
     }
 
     form.reset();
-
-    showStatus(
-      result.message ||
-        'Дякуємо. Підписану заяву успішно надіслано.',
-      'success'
-    );
+    window.location.assign('thank-you.html');
   } catch (error) {
     console.error(error);
 
