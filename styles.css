@@ -1879,8 +1879,7 @@ section[id] {
   }
 
   .value-number {
-    width: 40px;
-    height: 40px;
+    display: none;
   }
 
   .statement-template-only {
