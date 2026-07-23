@@ -22,17 +22,53 @@ const ALLOWED_FILE_EXTENSIONS = [
 const navToggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.site-nav');
 
+function closeMobileNav() {
+  if (!navToggle || !nav) return;
+
+  nav.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+  navToggle.setAttribute('aria-label', 'Відкрити меню');
+  document.body.classList.remove('nav-open');
+}
+
 if (navToggle && nav) {
   navToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
+
     navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.setAttribute(
+      'aria-label',
+      isOpen ? 'Закрити меню' : 'Відкрити меню'
+    );
+    document.body.classList.toggle('nav-open', isOpen);
   });
 
   nav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!nav.classList.contains('open')) return;
+
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+
+    if (!nav.contains(target) && !navToggle.contains(target)) {
+      closeMobileNav();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) {
+      closeMobileNav();
+      navToggle.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 920) {
+      closeMobileNav();
+    }
   });
 }
 
