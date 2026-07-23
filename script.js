@@ -287,21 +287,196 @@ function getModalFocusableElements(modal) {
   );
 }
 
-function preparePdfFrame(modal) {
+const PDFJS_VERSION = '6.1.200';
+const PDFJS_BUILD_URL =
+  `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VERSION}/build`;
+
+let pdfJsModulePromise = null;
+const mobilePdfRenderState = new WeakMap();
+
+function isMobilePdfView() {
+  return window.matchMedia('(max-width: 700px)').matches;
+}
+
+function loadPdfJs() {
+  if (!pdfJsModulePromise) {
+    pdfJsModulePromise = import(`${PDFJS_BUILD_URL}/pdf.min.mjs`)
+      .then((pdfjsLib) => {
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          `${PDFJS_BUILD_URL}/pdf.worker.min.mjs`;
+        return pdfjsLib;
+      });
+  }
+
+  return pdfJsModulePromise;
+}
+
+function getOrCreateMobilePdfViewer(modal) {
+  const wrap = modal.querySelector('.pdf-frame-wrap');
+  if (!(wrap instanceof HTMLElement)) return null;
+
+  let viewer = wrap.querySelector('.pdf-mobile-viewer');
+
+  if (!(viewer instanceof HTMLElement)) {
+    viewer = document.createElement('div');
+    viewer.className = 'pdf-mobile-viewer';
+    viewer.setAttribute('aria-label', 'Перегляд PDF-документа');
+    wrap.append(viewer);
+  }
+
+  return viewer;
+}
+
+function showMobilePdfError(viewer, baseUrl) {
+  viewer.innerHTML = '';
+
+  const message = document.createElement('p');
+  message.className = 'pdf-mobile-error';
+  message.append('Не вдалося завантажити документ у вбудованому перегляді. ');
+
+  const link = document.createElement('a');
+  link.href = baseUrl;
+  link.target = '_blank';
+  link.rel = 'noopener';
+  link.textContent = 'Відкрити PDF окремо';
+
+  message.append(link, '.');
+  viewer.append(message);
+}
+
+async function renderMobilePdf(modal) {
+  if (!isMobilePdfView()) return;
+
   const frame = modal.querySelector('.pdf-frame');
   if (!(frame instanceof HTMLIFrameElement)) return;
 
   const baseUrl = frame.dataset.pdfSrc;
   if (!baseUrl) return;
 
-  const mobile = window.matchMedia('(max-width: 700px)').matches;
-  const fragment = mobile
-    ? '#page=1&view=FitH&toolbar=0&navpanes=0'
-    : '#page=1&view=FitH&toolbar=1&navpanes=0';
-  const nextSrc = `${baseUrl}${fragment}`;
+  const viewer = getOrCreateMobilePdfViewer(modal);
+  if (!viewer) return;
 
-  if (!frame.src.endsWith(nextSrc)) {
-    frame.src = nextSrc;
+  const availableWidth = Math.max(
+    240,
+    Math.floor(viewer.clientWidth - 20)
+  );
+
+  const previousState = mobilePdfRenderState.get(modal);
+
+  if (
+    previousState?.status === 'ready' &&
+    Math.abs(previousState.width - availableWidth) < 18
+  ) {
+    return;
+  }
+
+  if (previousState?.status === 'loading') {
+    return previousState.promise;
+  }
+
+  viewer.innerHTML =
+    '<p class="pdf-mobile-loading">Завантаження документа…</p>';
+
+  const renderPromise = (async () => {
+    try {
+      const pdfjsLib = await loadPdfJs();
+      const loadingTask = pdfjsLib.getDocument({ url: baseUrl });
+      const pdf = await loadingTask.promise;
+
+      const pages = document.createElement('div');
+      pages.className = 'pdf-mobile-pages';
+
+      viewer.innerHTML = '';
+      viewer.append(pages);
+
+      for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
+        const page = await pdf.getPage(pageNumber);
+        const initialViewport = page.getViewport({ scale: 1 });
+        const scale = availableWidth / initialViewport.width;
+        const viewport = page.getViewport({ scale });
+        const outputScale = Math.min(window.devicePixelRatio || 1, 2);
+
+        const pageWrap = document.createElement('div');
+        pageWrap.className = 'pdf-mobile-page';
+
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d', { alpha: false });
+
+        if (!context) {
+          throw new Error('Canvas is not supported');
+        }
+
+        canvas.width = Math.max(
+          1,
+          Math.floor(viewport.width * outputScale)
+        );
+        canvas.height = Math.max(
+          1,
+          Math.floor(viewport.height * outputScale)
+        );
+        canvas.style.width = `${Math.floor(viewport.width)}px`;
+        canvas.style.height = `${Math.floor(viewport.height)}px`;
+        canvas.setAttribute(
+          'aria-label',
+          `Сторінка ${pageNumber} з ${pdf.numPages}`
+        );
+
+        pageWrap.append(canvas);
+        pages.append(pageWrap);
+
+        await page.render({
+          canvasContext: context,
+          viewport,
+          transform:
+            outputScale === 1
+              ? null
+              : [outputScale, 0, 0, outputScale, 0, 0],
+        }).promise;
+
+        page.cleanup();
+      }
+
+      mobilePdfRenderState.set(modal, {
+        status: 'ready',
+        width: availableWidth,
+      });
+    } catch (error) {
+      console.error('Не вдалося відобразити PDF:', error);
+      showMobilePdfError(viewer, baseUrl);
+      mobilePdfRenderState.set(modal, {
+        status: 'error',
+        width: availableWidth,
+      });
+    }
+  })();
+
+  mobilePdfRenderState.set(modal, {
+    status: 'loading',
+    width: availableWidth,
+    promise: renderPromise,
+  });
+
+  return renderPromise;
+}
+
+function preparePdfContent(modal) {
+  const frame = modal.querySelector('.pdf-frame');
+  if (!(frame instanceof HTMLIFrameElement)) return;
+
+  const baseUrl = frame.dataset.pdfSrc;
+  if (!baseUrl) return;
+
+  if (isMobilePdfView()) {
+    frame.removeAttribute('src');
+    requestAnimationFrame(() => renderMobilePdf(modal));
+    return;
+  }
+
+  const nextSrc =
+    `${baseUrl}#page=1&view=FitH&toolbar=1&navpanes=0`;
+
+  if (frame.getAttribute('src') !== nextSrc) {
+    frame.setAttribute('src', nextSrc);
   }
 }
 
@@ -314,7 +489,7 @@ function openModal(modalId) {
     closeModal(activeModal, false);
   }
 
-  preparePdfFrame(modal);
+  preparePdfContent(modal);
 
   lastFocusedElement = document.activeElement;
   activeModal = modal;
@@ -353,6 +528,28 @@ function closeModal(modal = activeModal, restoreFocus = true) {
     }
   }, 180);
 }
+
+
+let pdfResizeTimer = null;
+
+window.addEventListener('resize', () => {
+  if (!(activeModal instanceof HTMLElement) || !isMobilePdfView()) return;
+
+  window.clearTimeout(pdfResizeTimer);
+  pdfResizeTimer = window.setTimeout(() => {
+    const viewer = activeModal.querySelector('.pdf-mobile-viewer');
+    const state = mobilePdfRenderState.get(activeModal);
+
+    if (!(viewer instanceof HTMLElement) || !state) return;
+
+    const nextWidth = Math.max(240, Math.floor(viewer.clientWidth - 20));
+
+    if (Math.abs(state.width - nextWidth) >= 18) {
+      mobilePdfRenderState.delete(activeModal);
+      renderMobilePdf(activeModal);
+    }
+  }, 220);
+});
 
 modalOpeners.forEach((button) => {
   button.addEventListener('click', () => {
