@@ -28,7 +28,6 @@ function closeMobileNav() {
   nav.classList.remove('open');
   navToggle.setAttribute('aria-expanded', 'false');
   navToggle.setAttribute('aria-label', 'Відкрити меню');
-  document.body.classList.remove('nav-open');
 }
 
 if (navToggle && nav) {
@@ -40,7 +39,6 @@ if (navToggle && nav) {
       'aria-label',
       isOpen ? 'Закрити меню' : 'Відкрити меню'
     );
-    document.body.classList.toggle('nav-open', isOpen);
   });
 
   nav.querySelectorAll('a').forEach((link) => {
@@ -289,6 +287,24 @@ function getModalFocusableElements(modal) {
   );
 }
 
+function preparePdfFrame(modal) {
+  const frame = modal.querySelector('.pdf-frame');
+  if (!(frame instanceof HTMLIFrameElement)) return;
+
+  const baseUrl = frame.dataset.pdfSrc;
+  if (!baseUrl) return;
+
+  const mobile = window.matchMedia('(max-width: 700px)').matches;
+  const fragment = mobile
+    ? '#page=1&view=FitH&toolbar=0&navpanes=0'
+    : '#page=1&view=FitH&toolbar=1&navpanes=0';
+  const nextSrc = `${baseUrl}${fragment}`;
+
+  if (!frame.src.endsWith(nextSrc)) {
+    frame.src = nextSrc;
+  }
+}
+
 function openModal(modalId) {
   const modal = document.getElementById(modalId);
 
@@ -297,6 +313,8 @@ function openModal(modalId) {
   if (activeModal && activeModal !== modal) {
     closeModal(activeModal, false);
   }
+
+  preparePdfFrame(modal);
 
   lastFocusedElement = document.activeElement;
   activeModal = modal;
