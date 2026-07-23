@@ -102,7 +102,12 @@ button, input, select, textarea { font: inherit; }
   border-top: 1px solid rgba(184, 148, 77, 0.13);
   border-bottom: 1px solid rgba(184, 148, 77, 0.13);
 }
-
+#about {
+  padding: 0;
+} 
+.section.final-cta {
+  padding-top: 0;
+}
 .hero {
   position: relative;
   overflow: hidden;
