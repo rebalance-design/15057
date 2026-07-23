@@ -2292,3 +2292,8 @@ section[id] {
     width: 100%;
   }
 }
+@media (max-width: 421px) {
+  .hero.section {
+    padding: 20px 0;
+  }
+}
