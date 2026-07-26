@@ -82,7 +82,7 @@ button, input, select, textarea { font: inherit; }
 
 .site-nav a { text-decoration: none; opacity: 0.9; cursor: pointer;}
 .site-nav a:hover { color: var(--gold); }
-.nav-cta { padding: 10px 16px; border: 1px solid var(--gold); border-radius: 999px; }
+.nav-cta { padding: 10px 16px; border: 1px solid var(--gold); border-radius: 999px; justify-content: center;}
 
 .nav-toggle {
   display: none;
