@@ -113,23 +113,33 @@ function getMimeTypeFromExtension(filename) {
 }
 
 function validateFile(file) {
-  if (!file) {
-    throw new Error(
-      'Додайте підписану заяву у форматі .p7s, PDF або її чітку копію.'
-    );
-  }
-
   const extension = getFileExtension(file.name);
 
   if (!ALLOWED_FILE_EXTENSIONS.includes(extension)) {
     throw new Error(
-      'Додайте файл .p7s, PDF або зображення у форматі JPG, PNG, WEBP, HEIC чи HEIF.'
+      `Файл «${file.name}» має недопустимий формат. Дозволені: P7S, PDF, JPG, PNG, WEBP, HEIC та HEIF.`
     );
   }
 
   if (file.size > MAX_FILE_SIZE) {
-    throw new Error('Розмір файла не повинен перевищувати 8 МБ.');
+    throw new Error(
+      `Файл «${file.name}» перевищує допустимий розмір 8 МБ.`
+    );
   }
+}
+
+function validateFiles(files) {
+  if (!files.length) {
+    throw new Error(
+      'Додайте підписану заяву: один файл або два файли, якщо заява складається з двох аркушів.'
+    );
+  }
+
+  if (files.length > 2) {
+    throw new Error('Можна завантажити не більше двох файлів.');
+  }
+
+  files.forEach(validateFile);
 }
 
 function fileToBase64(file) {
@@ -149,26 +159,68 @@ function fileToBase64(file) {
   });
 }
 
-async function buildPayload(formElement) {
+async function buildPayload(
+  formElement,
+  file,
+  fileIndex,
+  totalFiles,
+  uploadBatchId
+) {
   const data = new FormData(formElement);
-  const file = fileField?.files?.[0];
 
-  validateFile(file);
+  const storedFileName =
+    totalFiles === 2
+      ? `заява_${uploadBatchId}_${fileIndex + 1}-з-2_${file.name}`
+      : file.name;
 
   return {
     personalDataConsent: data.get('consent_data') === 'on',
     joinConsent: data.get('consent_publication') === 'on',
 
-    fileName: file.name,
+    fileName: storedFileName,
     mimeType: getMimeTypeFromExtension(file.name),
     fileSize: file.size,
     fileData: await fileToBase64(file),
+
+    uploadBatchId,
+    fileNumber: fileIndex + 1,
+    totalFiles,
 
     website: String(data.get('website') || '').trim(),
     pageUrl: window.location.href,
     startedAt: formStartedAt,
     submittedAt: Date.now(),
   };
+}
+
+async function sendPayload(payload) {
+  const response = await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain;charset=utf-8',
+    },
+    body: JSON.stringify(payload),
+    redirect: 'follow',
+  });
+
+  const rawResponse = await response.text();
+  let result;
+
+  try {
+    result = JSON.parse(rawResponse);
+  } catch {
+    throw new Error(
+      'Сервер повернув некоректну відповідь. Перевірте налаштування Google Apps Script.'
+    );
+  }
+
+  if (!result.success) {
+    throw new Error(
+      result.message || 'Не вдалося надіслати заяву.'
+    );
+  }
+
+  return result;
 }
 
 form?.addEventListener('submit', async (event) => {
@@ -191,38 +243,44 @@ form?.addEventListener('submit', async (event) => {
   const originalButtonText =
     submitButton?.textContent || 'Надіслати заяву';
 
+  const files = fileField
+    ? Array.from(fileField.files || [])
+    : [];
+
+  let uploadedCount = 0;
+
   try {
+    validateFiles(files);
+
     if (submitButton) {
       submitButton.disabled = true;
-      submitButton.textContent = 'Надсилання…';
+      submitButton.textContent =
+        files.length === 2
+          ? 'Надсилання 1 з 2…'
+          : 'Надсилання…';
     }
 
-    const payload = await buildPayload(form);
+    const uploadBatchId =
+      `${Date.now().toString(36)}-${Math.random()
+        .toString(36)
+        .slice(2, 8)}`;
 
-    const response = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'text/plain;charset=utf-8',
-      },
-      body: JSON.stringify(payload),
-      redirect: 'follow',
-    });
+    for (let index = 0; index < files.length; index += 1) {
+      if (submitButton && files.length === 2) {
+        submitButton.textContent =
+          `Надсилання ${index + 1} з 2…`;
+      }
 
-    const rawResponse = await response.text();
-    let result;
-
-    try {
-      result = JSON.parse(rawResponse);
-    } catch {
-      throw new Error(
-        'Сервер повернув некоректну відповідь. Перевірте налаштування Google Apps Script.'
+      const payload = await buildPayload(
+        form,
+        files[index],
+        index,
+        files.length,
+        uploadBatchId
       );
-    }
 
-    if (!result.success) {
-      throw new Error(
-        result.message || 'Не вдалося надіслати заяву.'
-      );
+      await sendPayload(payload);
+      uploadedCount += 1;
     }
 
     form.reset();
@@ -230,12 +288,18 @@ form?.addEventListener('submit', async (event) => {
   } catch (error) {
     console.error(error);
 
-    showStatus(
+    let message =
       error instanceof Error
         ? error.message
-        : 'Сталася помилка під час надсилання. Спробуйте ще раз.',
-      'error'
-    );
+        : 'Сталася помилка під час надсилання. Спробуйте ще раз.';
+
+    if (files.length === 2 && uploadedCount === 1) {
+      message =
+        'Перший файл уже збережено, але другий надіслати не вдалося. Повторно виберіть і надішліть лише другий файл. ' +
+        message;
+    }
+
+    showStatus(message, 'error');
   } finally {
     if (submitButton) {
       submitButton.disabled = false;
@@ -247,10 +311,10 @@ form?.addEventListener('submit', async (event) => {
 fileField?.addEventListener('change', () => {
   clearStatus();
 
-  const file = fileField.files?.[0];
+  const files = Array.from(fileField.files || []);
 
   try {
-    validateFile(file);
+    validateFiles(files);
   } catch (error) {
     fileField.value = '';
 
