@@ -2297,3 +2297,12 @@ section[id] {
     padding: 20px 0;
   }
 }
+
+
+.statement-preparation.field-full h3 {
+  text-align: center;
+  margin: 12px 0 24px;
+}
+.button.secondary.statement-template-link.statement-template-only {
+  background: #fff;
+}
