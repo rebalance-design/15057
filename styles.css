@@ -2378,7 +2378,7 @@ section[id] {
 .template-choice-title {
   display: block;
   color: var(--navy);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 1.4;
 }
@@ -2387,7 +2387,7 @@ section[id] {
   display: block;
   margin-top: 4px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   line-height: 1.4;
 }
@@ -2411,17 +2411,18 @@ section[id] {
 
 .template-format-link span {
   display: block;
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .template-format-link small {
   display: block;
   margin-top: 5px;
   color: var(--muted);
-  font-size: 10px;
-  font-weight: 650;
+  font-size: 12px;
+  font-weight: 600;
   line-height: 1.35;
+  letter-spacing: 0.1em;
 }
 
 .template-format-link.secondary small {
