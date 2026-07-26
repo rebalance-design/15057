@@ -2306,3 +2306,152 @@ section[id] {
 .button.secondary.statement-template-link.statement-template-only {
   background: #fff;
 }
+
+
+/* =========================
+   Template format chooser
+   ========================= */
+
+.template-choice-intro {
+  margin: -10px 0 2px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.template-choice {
+  overflow: hidden;
+  border: 1px solid rgba(184, 148, 77, 0.34);
+  border-radius: 17px;
+  background: rgba(255, 253, 248, 0.86);
+}
+
+.template-choice summary {
+  position: relative;
+  display: block;
+  padding: 17px 58px 17px 18px;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.template-choice summary::-webkit-details-marker {
+  display: none;
+}
+
+.template-choice summary::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border: 1px solid rgba(184, 148, 77, 0.46);
+  border-radius: 50%;
+  color: var(--gold);
+  background: #fffdf8;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.template-choice[open] summary::after {
+  content: "−";
+}
+
+.template-choice summary:hover,
+.template-choice summary:focus-visible {
+  background: rgba(184, 148, 77, 0.09);
+  outline: none;
+}
+
+.template-choice[open] summary {
+  border-bottom: 1px solid rgba(184, 148, 77, 0.24);
+  background: rgba(184, 148, 77, 0.07);
+}
+
+.template-choice-title {
+  display: block;
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.template-choice-hint {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.template-format-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+}
+
+.template-format-link {
+  min-width: 0;
+  min-height: 74px;
+  padding: 12px 15px;
+  flex-direction: column;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.template-format-link span {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.template-format-link small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.template-format-link.secondary small {
+  color: var(--muted);
+}
+
+.signing-note-private {
+  margin-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .template-choice summary {
+    padding: 16px 54px 16px 15px;
+  }
+
+  .template-choice-title {
+    font-size: 13px;
+  }
+
+  .template-choice-hint {
+    font-size: 11px;
+  }
+
+  .template-format-options {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .template-format-link {
+    width: 100%;
+    min-height: 68px;
+  }
+}
