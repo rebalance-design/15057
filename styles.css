@@ -368,9 +368,9 @@ input[type="file"] { padding: 9px 10px; }
 .checkbox { grid-template-columns: 18px 1fr; align-items: start; font-weight: 600 !important; line-height: 1.45; }
 .checkbox input { min-height: auto; width: 18px; margin-top: 4px; }
 .hidden { display: none; }
-.field-help { color: var(--muted); font-size: 11px; font-weight: 600; line-height: 1.45; }
+.field-help { color: var(--muted); font-size: 14px; font-weight: 600; line-height: 1.45; }
 
-.form-status { display: none; padding: 12px 14px; border-radius: 14px; font-size: 13px; font-weight: 700; }
+.form-status { display: none; padding: 12px 14px; border-radius: 14px; font-size: 14px; font-weight: 700; }
 .form-status.visible { display: block; }
 .form-status.success { color: var(--success); background: rgba(36, 107, 77, 0.1); border: 1px solid rgba(36, 107, 77, 0.2); }
 .form-status.error { color: var(--error); background: rgba(162, 59, 59, 0.08); border: 1px solid rgba(162, 59, 59, 0.18); }
@@ -951,7 +951,7 @@ body.modal-open {
 .signing-guide-content {
   padding-top: 14px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 500;
 }
 
