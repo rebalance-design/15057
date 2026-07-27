@@ -2456,3 +2456,89 @@ section[id] {
     min-height: 68px;
   }
 }
+/* =========================
+   Stories questionnaires
+   ========================= */
+
+.stories-questionnaires {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  margin-top: 32px;
+}
+
+.story-questionnaire {
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+}
+
+.story-questionnaire h3 {
+  margin: 0 0 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(184, 148, 77, 0.35);
+  color: var(--navy);
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+}
+
+.story-questionnaire dl {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.story-questionnaire dl > div {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(14, 32, 56, 0.09);
+}
+
+.story-questionnaire dl > div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.story-questionnaire dt {
+  display: inline;
+  margin: 0;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.story-questionnaire dd {
+  display: inline;
+  margin: 0;
+  color: var(--navy2);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+@media (max-width: 850px) {
+  .stories-questionnaires {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .story-questionnaire {
+    padding: 20px;
+  }
+
+  .story-questionnaire h3 {
+    margin-bottom: 14px;
+    padding-bottom: 13px;
+    font-size: 21px;
+  }
+
+  .story-questionnaire dl > div {
+    padding: 9px 0;
+  }
+
+  .story-questionnaire dt,
+  .story-questionnaire dd {
+    font-size: 13px;
+  }
+}
