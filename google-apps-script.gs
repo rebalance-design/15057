@@ -14,7 +14,7 @@ const CONFIG = {
   SHEET_NAME: 'Заявки',
   DRIVE_FOLDER_ID: 'PASTE_GOOGLE_DRIVE_FOLDER_ID_HERE',
   MAX_FILE_BYTES: 8 * 1024 * 1024,
-  ALLOWED_FILE_EXTENSIONS: ['p7s', 'jpg', 'jpeg', 'png', 'webp', 'heic', 'heif'],
+  ALLOWED_FILE_EXTENSIONS: ['p7s', 'jpg', 'jpeg', 'png', 'webp', 'heic', 'heif', 'asice'],
 };
 
 const HEADERS = [
