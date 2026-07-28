@@ -16,6 +16,7 @@ const ALLOWED_FILE_EXTENSIONS = [
   'webp',
   'heic',
   'heif',
+  'asice',
 ];
 
 /* Мобільне меню */
@@ -100,6 +101,7 @@ function getMimeTypeFromExtension(filename) {
 
   const mimeTypes = {
     p7s: 'application/pkcs7-signature',
+    asice: 'application/vnd.etsi.asic-e+zip',
     pdf: 'application/pdf',
     jpg: 'image/jpeg',
     jpeg: 'image/jpeg',
