@@ -2753,3 +2753,5 @@ section[id] {
     font-size: 13px;
   }
 }
+.red-text {
+  color: rgb(255, 24, 0.8);}
