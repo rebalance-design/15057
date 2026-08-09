@@ -3088,15 +3088,7 @@ section[id] {
 .event-page .hero {
   position: relative;
   isolation: isolate;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(251, 247, 238, 0.97) 0%,
-      rgba(251, 247, 238, 0.93) 43%,
-      rgba(251, 247, 238, 0.75) 69%,
-      rgba(251, 247, 238, 0.58) 100%
-    ),
-    url("assets/ukmc-hero.jpg") center center / cover no-repeat;
+  background: linear-gradient( 90deg, rgba(251, 247, 238, 0.27) 0%, rgb(251, 247, 238) 23%, rgba(251, 247, 238, 1) 46%, rgba(251, 247, 238, 0) 100% ), url("assets/ukmc-hero.jpg") center center / cover no-repeat;
 }
 
 .event-page .hero::before {
@@ -3137,7 +3129,7 @@ section[id] {
 .event-page .hero-event-meta p {
   margin: 0;
   color: var(--navy2);
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .event-page .hero-event-meta strong {
@@ -3172,9 +3164,8 @@ section[id] {
 .event-page .event-main-date > span {
   color: var(--gold-light);
   font-size: clamp(72px, 7vw, 102px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 0.82;
-  letter-spacing: -0.07em;
 }
 
 .event-page .event-main-date div {
@@ -3208,8 +3199,7 @@ section[id] {
 .event-page .event-main-time span {
   color: var(--paper);
   font-size: 42px;
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-weight: 700;
 }
 
 .event-page .event-main-time small {
@@ -3227,12 +3217,10 @@ section[id] {
 
 .event-page .event-main-location > span {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   color: var(--gold-light);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .event-page .event-main-location strong {
@@ -3245,7 +3233,7 @@ section[id] {
 .event-page .event-main-location p {
   margin: 8px 0 0;
   color: rgba(255, 253, 248, 0.72);
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.55;
 }
 
@@ -3259,7 +3247,9 @@ section[id] {
   padding-bottom: 92px !important;
 }
 
-
+.event-page li::before {
+  top: 10px;
+}
 /* =========================================================
    FORMAT CARDS 01–04
    ========================================================= */
@@ -3305,15 +3295,14 @@ section[id] {
   border-radius: 0;
   color: rgba(184, 148, 77, 0.95);
   font-size: 42px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 0.8;
-  letter-spacing: -0.07em;
 }
 
 .event-page .info-card > span::after {
   content: "";
   display: block;
-  width: 36px;
+  width: 72px;
   height: 2px;
   margin-top: 14px;
   background: var(--gold);
