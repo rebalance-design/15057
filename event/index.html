@@ -13,7 +13,36 @@
   <meta property="og:title" content="Захист без винятків та дискримінації" />
   <meta property="og:description" content="Права дітей з інвалідністю під час війни. Публічна презентація Спільної резолюції – 27 серпня 2026 року, Київ + онлайн." />
   <link rel="icon" href="https://15057.org.ua/assets/logo-gold.png" type="image/png" />
+   <style>
+    html {
+      background: #ffffff;
+    }
+
+    body {
+      opacity: 0;
+      background: #ffffff;
+    }
+
+    body.page-ready {
+      opacity: 1;
+    }
+  </style>
+
   <link rel="stylesheet" href="../styles.css">
+
+  <noscript>
+    <style>
+      body {
+        opacity: 1 !important;
+      }
+    </style>
+  </noscript>
+
+  <script>
+    window.addEventListener('load', function () {
+      document.body.classList.add('page-ready');
+    });
+  </script>
 </head>
 <body class="event-page">
   <header class="site-header" id="top">
