@@ -2755,3 +2755,334 @@ section[id] {
 }
 .red-text {
   color: rgb(255, 24, 0.8);}
+
+
+
+
+
+/* =========================================================
+   EVENT PAGE — 27.08.2026
+   "Захист без винятків та дискримінації"
+   ========================================================= */
+
+/* На основному сайті #about має спеціальні відступи.
+   Для сторінки події повертаємо стандартну секцію. */
+.event-page #about {
+  padding: 92px 0;
+}
+
+.event-page .section-lead {
+  max-width: 800px;
+  font-size: 17px;
+  color: var(--navy2);
+  line-height: 1.7;
+}
+
+.event-page .narrow-wide {
+  max-width: 1040px;
+}
+
+/* ---------- HERO: дата / час / формат ---------- */
+
+.event-page .event-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.event-page .fact {
+  padding-top: 12px;
+  border-top: 1px solid rgba(184, 148, 77, 0.3);
+}
+
+.event-page .fact span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.event-page .fact strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.event-page .fact small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ---------- Локація в hero-card ---------- */
+
+.event-page .location-mini {
+  display: grid;
+  gap: 4px;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(216, 191, 131, 0.25);
+}
+
+.event-page .location-mini span {
+  color: var(--gold-light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.event-page .location-mini strong {
+  font-size: 14px;
+}
+
+.event-page .location-mini small {
+  color: rgba(255, 253, 248, 0.72);
+  font-size: 12px;
+}
+
+/* ---------- Примітка про непідтверджених учасників ---------- */
+
+.event-page .notice {
+  margin-top: 28px;
+}
+
+.event-page .notice strong {
+  color: #8f6d31;
+}
+
+/* ---------- Основна інформація про формат ---------- */
+
+.event-page .info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.event-page .info-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 253, 248, 0.92),
+      rgba(184, 148, 77, 0.055)
+    );
+}
+
+.event-page .info-card > span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(184, 148, 77, 0.42);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.event-page .info-card b {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.event-page .info-card strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.event-page .info-card small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* ---------- Структура заходу ---------- */
+
+.event-page .program-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.event-page .program-list article {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 20px;
+  padding: 22px 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(
+      100deg,
+      rgba(255, 253, 248, 0.9),
+      rgba(184, 148, 77, 0.055)
+    );
+}
+
+.event-page .program-number {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(184, 148, 77, 0.42);
+  border-radius: 50%;
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.event-page .program-list h3 {
+  margin: 2px 0 6px;
+  font-size: 19px;
+  letter-spacing: -0.025em;
+}
+
+.event-page .program-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- Контактний блок ---------- */
+
+.event-page .contact-card {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 248, 0.82);
+  box-shadow: var(--shadow);
+}
+
+.event-page .contact-card > span {
+  display: inline-flex;
+  margin-bottom: 10px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.event-page .contact-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 24px;
+}
+
+.event-page .contact-card p {
+  color: var(--muted);
+}
+
+.event-page .contact-mail {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.event-page .contact-mail:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1040px) {
+  .event-page .info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .event-page .contact-card {
+    max-width: 720px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 780px) {
+  .event-page #about {
+    padding: 60px 0;
+  }
+
+  .event-page .event-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 18px;
+  }
+
+  .event-page .info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .event-page .info-card {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 14px;
+    align-items: start;
+  }
+
+  .event-page .info-card > span {
+    grid-row: 1 / 4;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+
+  .event-page .info-card b,
+  .event-page .info-card strong,
+  .event-page .info-card small {
+    grid-column: 2;
+  }
+
+  .event-page .program-list article {
+    grid-template-columns: 52px 1fr;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .event-page .program-number {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+  }
+
+  .event-page .program-list h3 {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 420px) {
+  .event-page .program-list article {
+    grid-template-columns: 1fr;
+  }
+
+  .event-page .program-number {
+    margin-bottom: 2px;
+  }
+}
+
+
+
