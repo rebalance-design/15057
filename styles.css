@@ -106,9 +106,6 @@ button, input, select, textarea { font: inherit; }
   padding: 0;
   padding-bottom: 100px;
 } 
-.section.final-cta {
-  padding-top: 0;
-}
 .hero {
   position: relative;
   overflow: hidden;
