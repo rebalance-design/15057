@@ -1845,7 +1845,9 @@ section[id] {
     line-height: 1.45;
   }
 }
-
+.event-page .hero-mobile-image {
+  display: none;
+}
 @media (max-width: 420px) {
   .container {
     width: calc(100% - 22px);
@@ -3088,28 +3090,24 @@ section[id] {
 /* ---------- HERO background ---------- */
 
 .event-page .hero {
-  position: relative;
-  isolation: isolate;
-  background: linear-gradient( 90deg, rgba(251, 247, 238, 0.27) 0%, rgb(251, 247, 238) 23%, rgba(251, 247, 238, 1) 46%, rgba(251, 247, 238, 0) 100% ), url("assets/ukmc-hero.jpg") center center / cover no-repeat;
-}
+    background: var(--cream);
+  }
 
-.event-page .hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(251, 247, 238, 0.05),
-      rgba(251, 247, 238, 0.18)
-    );
-}
+  .event-page .hero::before,
+  .event-page .hero::after {
+    display: none;
+  }
 
-.event-page .hero::after {
-  display: none;
-}
-
+  .event-page .hero-mobile-image {
+    display: block;
+    width: 100%;
+    height: 170px;
+    margin-top: 24px;
+    margin-bottom: 4px;
+    border-radius: 18px;
+    background:
+      url("assets/ukmc-hero.jpg") center 45% / cover no-repeat;
+  }
 
 /* ---------- Hero description ---------- */
 
