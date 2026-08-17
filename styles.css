@@ -1853,9 +1853,9 @@ section[id] {
     width: calc(100% - 22px);
   }
 .event-page .event-main-time {
-  padding: 0 0 14px; }
+  padding: 0 0 14px !important; }
 .event-page .event-main-location {
-  padding-top: 0;
+  padding-top: 0 !important;
 }
   .brand small {
     display: none;
