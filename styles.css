@@ -1849,7 +1849,11 @@ section[id] {
   .container {
     width: calc(100% - 22px);
   }
-
+.event-page .event-main-time {
+  padding: 0 0 14px; }
+.event-page .event-main-location {
+  padding-top: 0;
+}
   .brand small {
     display: none;
   }
