@@ -1982,7 +1982,7 @@ section[id] {
   display: block;
   position: relative;
   z-index: 2;
-  padding: 0;
+  padding: 20px 0;
   color: var(--paper);
   background: var(--navy);
   border-top: 1px solid rgba(216, 191, 131, 0.25);
@@ -1997,9 +1997,9 @@ section[id] {
 
 .event-banner-inner {
   min-height: 118px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
+  display: flex;
+    align-items: center;
+    text-align: center;
   gap: 42px;
 }
 
@@ -2007,7 +2007,7 @@ section[id] {
   display: grid;
   gap: 2px;
   padding-right: 38px;
-  border-right: 1px solid rgba(216, 191, 131, 0.3);
+border-right: none;
   white-space: nowrap;
 }
 
