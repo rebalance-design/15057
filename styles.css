@@ -3509,20 +3509,15 @@ border-right: none;
 
 
   .event-page .hero {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(251, 247, 238, 0.95) 0%,
-        rgba(251, 247, 238, 0.9) 62%,
-        rgba(251, 247, 238, 0.82) 100%
-      ),
-      url("assets/ukmc-hero.jpg") center center / cover no-repeat;
+  background: linear-gradient( 90deg, rgba(251, 247, 238, 0) 0%, rgb(251, 247, 238) 20%, rgb(251, 247, 238) 54%, rgba(251, 247, 238, 0) 100% ), url("assets/ukmc-hero.jpg") center center / cover no-repeat;
   }
 
   .event-page .hero-event-meta {
     display: grid;
     gap: 7px;
   }
+.event-page .hero::before, .event-page .hero::after { 
+  display: none;}
 
   .event-page .event-main-card {
     min-height: 0;
