@@ -3506,11 +3506,7 @@ border-right: none;
 .event-page .final-cta .contact-mail {
   display: block;}
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
-@media (max-width: 780px) {
 
   .event-page .hero {
     background:
@@ -3575,6 +3571,5 @@ border-right: none;
     padding-bottom: 64px !important;
   }
 
-}
 
 
