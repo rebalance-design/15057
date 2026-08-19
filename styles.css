@@ -3253,18 +3253,16 @@ border-right: none;
   .event-page .program-number {
     margin-bottom: 2px;
   }
-}
-/* ---------- HERO background ---------- */
 
-.event-page .hero {
+  .event-page .hero {
     background: var(--cream);
   }
 
   .event-page .hero::before,
   .event-page .hero::after {
-    display: none !important;
+    display: none;
   }
-
+.event-page .hero-mobile-image
    {
     display: block;
     width: 100%;
@@ -3275,6 +3273,10 @@ border-right: none;
     background:
       url("assets/ukmc-hero.jpg") center 45% / cover no-repeat;
   }
+}
+/* ---------- HERO background ---------- */
+
+
 
 /* ---------- Hero description ---------- */
 
