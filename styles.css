@@ -3245,7 +3245,7 @@ border-right: none;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 768px) {
   .event-page .program-list article {
     grid-template-columns: 1fr;
   }
@@ -3255,7 +3255,7 @@ border-right: none;
   }
 
   .event-page .hero {
-    background: var(--cream);
+    background: var(--cream) !important;
   }
 
   .event-page .hero::before,
