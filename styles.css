@@ -796,7 +796,9 @@ body.modal-open {
   font-size: 10px;
   font-weight: 800;
 }
-
+.event-page .hero-mobile-image {
+  display: none;
+}
 .pdf-modal-header h2 {
   margin: 0;
   max-width: 760px;
@@ -1928,9 +1930,7 @@ section[id] {
     line-height: 1.45;
   }
 }
-.event-page .hero-mobile-image {
-  display: none;
-}
+
 @media (max-width: 420px) {
   .container {
     width: calc(100% - 22px);
@@ -3262,10 +3262,10 @@ border-right: none;
 
   .event-page .hero::before,
   .event-page .hero::after {
-    display: none;
+    display: none !important;
   }
 
-  .event-page .hero-mobile-image {
+   {
     display: block;
     width: 100%;
     height: 170px;
