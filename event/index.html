@@ -1246,7 +1246,10 @@ font-size: 64px;    line-height: .98;
 
 .voice-author {
   margin-top: auto;
-  padding-top: 30px;
+background: #000;
+  max-width: fit-content;
+  padding: 12px 54px 12px 16px;
+color: #fff;
 }
 
 .voice-author strong {
@@ -1259,7 +1262,7 @@ font-size: 64px;    line-height: .98;
   display: block;
   max-width: 620px;
   color: inherit;
-  opacity: .72;
+  opacity: 1;
   font-size: 14px;
   line-height: 1.4;
 }
@@ -1365,6 +1368,13 @@ font-size: 64px;    line-height: .98;
   padding: 0 5px;
   background: #1469d2;
   color: #fff;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+    .marker-yellow {
+  padding: 0 5px;
+  background: #ffd500;
+  color: #000;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -1738,7 +1748,7 @@ font-size: 64px;    line-height: .98;
         <blockquote>
           «Закон України «Про охорону дитинства» в першу чергу визнає
           <span class="marker-blue">охорону дитинства</span> в Україні як
-          стратегічно загальнонаціональний пріоритет, який має важливе значення
+          стратегічно <span class="marker-yellow">загальнонаціональний пріоритет</span>, який має важливе значення
           для забезпечення національної безпеки України».
         </blockquote>
 
