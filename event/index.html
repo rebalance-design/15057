@@ -1,257 +1,994 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Захист без винятків і дискримінації | 26.08.2026</title>
-  <meta name="description" content="Публічна презентація Спільної резолюції щодо рівного захисту прав дітей з інвалідністю незалежно від статусу їхніх батьків у контексті законопроєкту №15057." />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#0e2038" />
-  <meta property="og:locale" content="uk_UA" />
-  <meta property="og:type" content="event" />
-  <meta property="og:site_name" content="ГО «Майбутнє має право» · №15057" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Захист без винятків і дискримінації - результати публічної презентації Спільної резолюції</title>
+  <meta name="description" content="Результати публічної презентації Спільної резолюції «Захист без винятків і дискримінації: права дітей з інвалідністю під час війни», документи події, реєстр підписантів та відповідь МОУ про близько 2 тисячі військових." />
   <meta property="og:title" content="Захист без винятків і дискримінації" />
-  <meta property="og:description" content="Права дітей з інвалідністю під час війни. Публічна презентація Спільної резолюції – 26 серпня 2026 року, Київ + онлайн." />
-  <meta content="https://15057.org.ua/assets/hero-family.webp" property="og:image"/>
-  <link rel="icon" href="https://15057.org.ua/assets/logo-gold.png" type="image/png" />
-   <style>
-    html {
-      background: #ffffff;
+  <meta property="og:description" content="Права дітей з інвалідністю під час війни - результати публічної презентації, документи та фотозвіт." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/photo-06.jpg" />
+  <meta name="theme-color" content="#121418" />
+  <style>
+    :root {
+      --bg: #121418;
+      --panel: #1a1f26;
+      --panel-2: #171b21;
+      --text: #f5f7fb;
+      --muted: #b8c1cf;
+      --line: rgba(255,255,255,.10);
+      --blue: #1b67d0;
+      --yellow: #f3d30d;
+      --max: 1180px;
+      --radius: 24px;
+      --shadow: 0 22px 48px rgba(0,0,0,.30);
     }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      opacity: 0;
-      background: #ffffff;
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    body.page-ready {
-      opacity: 1;
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .section { padding: 88px 0; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--yellow);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: clamp(32px, 5vw, 62px);
+      line-height: .98;
+      letter-spacing: -0.04em;
+    }
+
+    .section-lead {
+      max-width: 780px;
+      margin: 0;
+      font-size: 19px;
+      color: var(--muted);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 96px 0 64px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
+        radial-gradient(circle at top right, rgba(27,103,208,.18), transparent 32%),
+        var(--bg);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      width: 34vw;
+      max-width: 420px;
+      height: 138px;
+      border-top-left-radius: 140px;
+      border-top-right-radius: 140px;
+      opacity: .98;
+      z-index: 0;
+    }
+
+    .hero::before {
+      left: -40px;
+      background: var(--blue);
+      border-top-right-radius: 200px;
+    }
+
+    .hero::after {
+      right: -40px;
+      background: var(--yellow);
+      border-top-left-radius: 200px;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 36px;
+      align-items: end;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(44px, 7vw, 92px);
+      line-height: .95;
+      letter-spacing: -0.05em;
+    }
+
+    .hero h1 span { color: var(--yellow); }
+
+    .hero p {
+      margin: 0;
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 720px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 34px 0 30px;
+    }
+
+    .meta-chip {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      min-height: 52px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform .16s ease, opacity .16s ease, background-color .16s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: var(--yellow);
+      color: #111;
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.18);
+      color: var(--text);
+    }
+
+    .hero-photo {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 420px;
+      background: #0f1217;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-card {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      max-width: 82%;
+      background: rgba(18,20,24,.82);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+
+    .hero-card strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .hero-card p {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .support-strip {
+      padding-top: 56px;
+      padding-bottom: 56px;
+      background: linear-gradient(180deg, rgba(255,255,255,.015), rgba(255,255,255,0));
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .support-number {
+      font-size: clamp(88px, 18vw, 170px);
+      line-height: .85;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      color: var(--yellow);
+      margin: 0;
+    }
+
+    .support-box {
+      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .support-box p {
+      margin: 0 0 18px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+
+    .support-box p strong {
+      color: var(--text);
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .kpi {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: var(--yellow);
+    }
+
+    .kpi span {
+      display: block;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .inline-note {
+      margin-top: 28px;
+      padding: 20px 22px;
+      border-radius: 18px;
+      border: 1px solid rgba(243,211,13,.2);
+      background: rgba(243,211,13,.05);
+      color: #f3f0da;
+    }
+
+    .participants-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 36px;
+    }
+
+    .list-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .list-panel h3 {
+      margin: 0 0 18px;
+      font-size: 22px;
+    }
+
+    .plain-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .plain-list li {
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+      font-size: 16px;
+    }
+
+    .plain-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .7em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      transform: translateY(-50%);
+    }
+
+    .gallery-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #0d1014;
+      border: 1px solid var(--line);
+      min-height: 240px;
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(18,20,24,.82);
+      backdrop-filter: blur(10px);
+      font-size: 14px;
+      color: #eef1f6;
+    }
+
+    .span-7 { grid-column: span 7; }
+    .span-5 { grid-column: span 5; }
+    .span-4 { grid-column: span 4; }
+    .span-8 { grid-column: span 8; }
+    .span-6 { grid-column: span 6; }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .topic {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .topic-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--blue);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .topic h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      line-height: 1.15;
+    }
+
+    .topic p {
+      margin: 0;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .quote-box {
+      margin-top: 22px;
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(27,103,208,.10), rgba(243,211,13,.08));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+    }
+
+    blockquote {
+      margin: 0;
+      font-size: clamp(24px, 3.2vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      max-width: 920px;
+    }
+
+    .quote-meta {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .mou-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 20px;
+      margin-top: 36px;
+      align-items: stretch;
+    }
+
+    .highlight-card,
+    .content-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight-card strong {
+      display: block;
+      font-size: clamp(72px, 13vw, 124px);
+      line-height: .9;
+      letter-spacing: -0.06em;
+      color: var(--yellow);
+      margin-bottom: 10px;
+    }
+
+    .highlight-card span {
+      display: block;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .highlight-card p,
+    .content-card p,
+    .content-card li {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .content-card ul {
+      margin: 14px 0 0;
+      padding-left: 20px;
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .doc-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 100%;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .doc-badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.06);
+      color: var(--yellow);
+    }
+
+    .doc-card h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.15;
+    }
+
+    .doc-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      flex-grow: 1;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .step {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .step strong {
+      display: block;
+      font-size: 44px;
+      line-height: 1;
+      margin-bottom: 14px;
+      color: var(--yellow);
+      letter-spacing: -0.04em;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .cta {
+      position: relative;
+      overflow: hidden;
+      padding: 88px 0 100px;
+      background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,.02));
+    }
+
+    .cta::before,
+    .cta::after {
+      content: "";
+      position: absolute;
+      bottom: -24px;
+      width: 34vw;
+      max-width: 420px;
+      height: 138px;
+      border-top-left-radius: 140px;
+      border-top-right-radius: 140px;
+      opacity: .98;
+      z-index: 0;
+    }
+
+    .cta::before {
+      left: -40px;
+      background: var(--blue);
+      border-top-right-radius: 200px;
+    }
+
+    .cta::after {
+      right: -40px;
+      background: var(--yellow);
+      border-top-left-radius: 200px;
+    }
+
+    .cta-panel {
+      position: relative;
+      z-index: 1;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-panel p {
+      max-width: 760px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 28px 0 50px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .support-grid,
+      .participants-wrap,
+      .mou-grid { grid-template-columns: 1fr; }
+      .cards-grid,
+      .docs-grid,
+      .steps,
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .hero-photo { min-height: 340px; }
+    }
+
+    @media (max-width: 760px) {
+      .section { padding: 68px 0; }
+      .hero { padding: 78px 0 56px; }
+      .hero h1 { font-size: clamp(40px, 12vw, 62px); }
+      .hero p { font-size: 18px; }
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .cards-grid,
+      .docs-grid,
+      .steps,
+      .kpis,
+      .topics-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item,
+      .span-4,
+      .span-5,
+      .span-6,
+      .span-7,
+      .span-8 { grid-column: auto; }
+      .hero-card { max-width: calc(100% - 40px); }
+      .cta-panel { padding: 28px 22px; }
+      .support-box,
+      .highlight-card,
+      .content-card,
+      .card,
+      .doc-card,
+      .step,
+      .topic,
+      .list-panel { padding: 22px; }
     }
   </style>
-
-  <link rel="stylesheet" href="../styles.css">
-
-  <noscript>
-    <style>
-      body {
-        opacity: 1 !important;
-      }
-    </style>
-  </noscript>
-
-  <script>
-    window.addEventListener('load', function () {
-      document.body.classList.add('page-ready');
-    });
-  </script>
-  <script defer src="../script.js"></script>
 </head>
-<body class="event-page">
-  <header class="site-header" id="top">
-    <div class="container nav-wrap">
-      <a class="brand" href="https://15057.org.ua/" aria-label="На головну сторінку 15057.org.ua">
-        <img src="https://15057.org.ua/assets/logo-gold.png" alt="" />
-        <span><b>№15057</b><small>рівний захист дітей з інвалідністю</small></span>
-      </a>
-      <button
-  class="nav-toggle"
-  type="button"
-  aria-expanded="false"
-  aria-label="Відкрити меню"
->
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
-      <nav class="site-nav" aria-label="Навігація сторінкою події">
-        <a href="#about">Про подію</a>
-        <a href="#format">Формат</a>
-        <a href="#program">Структура</a>
-        <a href="#participation">Участь</a>
-        <a class="nav-cta nav-cta-primary" href="https://forms.gle/uviST7VBbLg3Mjuy9">Реєстрація на подію</a>
-        <a class="nav-cta" href="https://15057.org.ua/">На головну</a>
-      </nav>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Публічна презентація Спільної резолюції</div>
+          <h1>Захист без винятків <span>і дискримінації</span></h1>
+          <p>Права дітей з інвалідністю під час війни - результати події, документи, фотозвіт і подальші кроки адвокації у контексті законопроєкту №15057.</p>
+          <div class="hero-meta">
+            <div class="meta-chip">26 серпня 2026 року</div>
+            <div class="meta-chip">Український кризовий медіа-центр, Київ</div>
+            <div class="meta-chip">Офлайн + онлайн</div>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="#documents">Документи події</a>
+            <a class="btn btn-secondary" href="#gallery">Фото із заходу</a>
+            <a class="btn btn-secondary" href="mailto:office@15057.org.ua?subject=Приєднання%20до%20Спільної%20резолюції">Приєднатися до резолюції</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="assets/images/photo-06.jpg" alt="Публічна презентація Спільної резолюції в Українському кризовому медіа-центрі" />
+          <div class="hero-card">
+            <strong>848</strong>
+            <p>юридичних та фізичних осіб уже підтримали Спільну резолюцію. Документ залишається відкритим для приєднання.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
-    <section class="hero section">
-  <div class="container hero-grid">
-
-    <div class="hero-copy">
-      <p class="eyebrow">Публічна презентація Спільної резолюції</p>
-
-      <h1 class="hero-title">
-        <span class="hero-title-main">Захист без винятків і&nbsp;дискримінації:</span>
-        <span class="hero-title-accent">права дітей з інвалідністю під час війни</span>
-      </h1>
-
-      <p class="lead hero-event-description">
-        Публічна презентація Спільної резолюції щодо рівного захисту прав дітей
-        з інвалідністю незалежно від статусу їхніх батьків
-        (у&nbsp;контексті законопроєкту №15057).
-      </p>
-<div class="hero-mobile-image" aria-hidden="true"></div>
-      <div class="hero-event-meta">
-        <p><strong>Формат:</strong> Київ + онлайн-трансляція / Zoom</p>
-        <p><strong>Тривалість:</strong> 70–90 хв</p>
-      </div>
-
-      <div class="hero-actions">
-        <a class="button primary" href="#about">Про подію</a>
-        <a
-          class="button secondary"
-          href="https://15057.org.ua/assets/resolution-15057.pdf"
-          target="_blank"
-          rel="noopener"
-        >
-          Читати Спільну резолюцію
-        </a>
-      </div>
-
-      <div class="hero-principles" aria-label="Ключові принципи">
-        <span><i>01</i> Найкращі інтереси дитини</span>
-        <span><i>02</i> Рівний захист</span>
-        <span><i>03</i> Недискримінація</span>
-      </div>
-    </div>
-
-    <aside class="hero-visual" aria-label="Дата, час та місце події">
-      <div class="hero-card event-main-card">
-
-        <div class="event-main-date">
-          <span>26</span>
-          <div>
-            <strong>серпня</strong>
-            <small>2026</small>
-          </div>
-        </div>
-
-        <div class="event-main-time">
-          <span>14:30</span>
-        </div>
-
-        <div class="event-main-location">
-          <span>м. Київ</span>
-          <strong>Український кризовий медіа-центр</strong>
-          <p>Український дім<br>вул. Хрещатик, 2</p>
-        </div>
-
-      </div>
-    </aside>
-
-  </div>
-</section>
-
-    <section class="section" id="about">
-      <div class="container two-col align-start">
-        <div>
-          <p class="eyebrow">Про подію</p>
-          <h2>Майданчик для публічного діалогу про рівний захист прав дітей з&nbsp;інвалідністю</h2>
-          <p class="section-lead">Захід присвячений презентації Спільної резолюції, обговоренню проблеми рівного захисту прав дітей з інвалідністю під час війни та можливих шляхів її вирішення.</p>
-          <p>До участі запрошуємо представників органів державної влади, парламенту, правозахисних і громадських організацій, профільних державних інституцій та міжнародних організацій. Окрема частина заходу буде присвячена відкритому діалогу між громадянським суспільством та представниками установ, компетенції яких стосуються порушеної проблеми.</p>
-          <div class="notice"><strong>Участь окремих установ і представників уточнюється.</strong><br>Склад учасників та фінальна програма оновлюватимуться після підтверджень.</div>
-        </div>
-        <aside class="doc-card">
-          <span>Ключова мета</span>
-          <h3>Від зафіксованої проблеми –<br>до&nbsp;конкретних рішень</h3>
-          <p>Представити консолідовану позицію громадянського суспільства, почути різні сторони та визначити наступні національні й міжнародні правозахисні кроки:</p>
-          <ul>
-            <li>рівність і недискримінація дітей;</li>
-            <li>правовий і законодавчий контекст;</li>
-            <li>діалог із відповідальними інституціями;</li>
-            <li>подальші практичні кроки.</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section section-soft" id="format">
+    <section class="support-strip" id="results">
       <div class="container">
-        <p class="eyebrow">Формат</p>
-        <h2>Київ + онлайн-трансляція / Zoom</h2>
-        <p class="section-intro">Очна частина запланована в пресцентрі Українського кризового медіа-центру. Для учасників, які не зможуть бути присутні особисто, передбачається можливість онлайн-долучення.</p>
-        <div class="info-grid">
-          <article class="info-card"><span>01</span><b>Дата</b><strong>26 серпня 2026 року</strong></article>
-          <article class="info-card"><span>02</span><b>Час</b><strong>14:30</strong></article>
-          <article class="info-card"><span>03</span><b>Локація</b><strong>УКМЦ · Український дім</strong>Київ, вул. Хрещатик, 2</article>
-          <article class="info-card"><span>04</span><b>Тривалість</b><strong>70–90 хвилин</strong></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="program">
-      <div class="container narrow-wide">
-        <p class="eyebrow">Попередня структура</p>
-        <h2>Зміст заходу</h2>
-        <p class="section-intro">Фінальний порядок і склад учасників буде сформовано після підтвердження запрошених інституцій. Нижче – загальна логіка заходу.</p>
-
-        <div class="program-list">
-          <article><div class="program-number">01</div><div><h3>Відкриття і озвучення проблеми</h3><p>Короткий контекст, мета заходу і причини підготовки Спільної резолюції.</p></div></article>
-          <article><div class="program-number">02</div><div><h3>Презентація Спільної резолюції</h3><p>Основні положення документа, спільна позиція організацій та експертів, які до нього долучилися.</p></div></article>
-          <article><div class="program-number">03</div><div><h3>Правовий, законодавчий та експертний контекст</h3><p>Погляд громадських і правозахисних організацій та експертів на проблему: права дітей з інвалідністю, питання рівності й недискримінації, чинне регулювання, практичні наслідки та механізми необхідних змін, зокрема в контексті законопроєкту&nbsp;№15057.</p></div></article>
-          <article><div class="program-number">04</div><div><h3>Діалог з інституціями</h3><p>Обговорення проблеми з представниками державних, парламентських, правозахисних та інших профільних інституцій: можливі механізми вирішення та подальші практичні кроки.</p></div></article>
-          <article><div class="program-number">05</div><div><h3>Голос родин</h3><p>Короткі історії про те, як чинна ситуація впливає на дітей з інвалідністю та їхні сім’ї у повсякденному житті.</p></div></article>
-          <article><div class="program-number">06</div><div><h3>Подальші кроки</h3><p>Офіційне направлення Спільної резолюції, подальша адвокація на національному та міжнародному рівнях і контроль реакції відповідальних інституцій.</p></div></article>
-          <article><div class="program-number">07</div><div><h3>Запитання і завершення</h3><p>Коротке підбиття підсумків, запитання учасників та організаційні повідомлення.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-soft" id="participation">
-      <div class="container two-col align-start">
-        <div>
-          <p class="eyebrow">Участь і діалог</p>
-          <h2>Запрошуємо до фахової розмови, а не формального обміну заявами</h2>
-          <p class="section-lead">Мета події – створити простір, де громадянське суспільство, правозахисна спільнота та відповідальні державні інституції можуть почути позиції одне одного й обговорити реальні механізми вирішення проблеми.</p>
-          <p>До діалогу планується запросити представників профільних парламентських комітетів, державних органів у сфері оборони, прав людини, ветеранської та соціальної політики, а також громадських і міжнародних правозахисних організацій. Участь може бути особистою, онлайн або через делегованого представника.</p>
-        </div>
-        <aside class="contact-card">
-          <span>Організатор</span>
-          <h3>ГО «Майбутнє має право»</h3>
-          <p>З питань участі, партнерства, медіа та організаційної взаємодії:</p>
-          <a class="contact-mail" href="mailto:office@15057.org.ua">office@15057.org.ua</a>
-          <div class="hero-actions compact">
-            <a class="button primary" href="https://forms.gle/uviST7VBbLg3Mjuy9">Реєстрація на подію</a>
+        <div class="support-grid">
+          <div>
+            <p class="support-number">848</p>
           </div>
-        </aside>
+          <div class="support-box">
+            <p><strong>На сьогодні резолюцію підтримало двоє народних депутатів,</strong> Нацасамблея осіб з інвалідністю України (а це - понад 120 організацій), ГС «Мережа батьківських організацій» (понад 40 організацій), близько 20 інших правозахисних організацій, понад 20 експертів у галузях права, медицини, психології та реабілітації - загалом 848 юридичних та фізичних осіб.</p>
+            <p><strong>Спільна резолюція залишається відкритою для приєднання.</strong></p>
+            <div class="kpis">
+              <div class="kpi">
+                <strong>2</strong>
+                <span>народні депутати України</span>
+              </div>
+              <div class="kpi">
+                <strong>120+</strong>
+                <span>організацій у складі НАІУ</span>
+              </div>
+              <div class="kpi">
+                <strong>40+</strong>
+                <span>організацій у ГС «Мережа батьківських організацій»</span>
+              </div>
+              <div class="kpi">
+                <strong>20+</strong>
+                <span>експертів у сферах права, медицини, психології та реабілітації</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section final-cta">
-      <div class="container narrow">
-        <p class="eyebrow">Ключовий принцип</p>
-        <h2>Статус батьків не повинен визначати обсяг державного захисту, який отримує дитина з інвалідністю.</h2>
-        <p class="contact-mail">26 серпня 2026 року · Київ + онлайн</p>
-        <a class="button primary" href="https://15057.org.ua/assets/resolution-15057.pdf" target="_blank" rel="noopener">Читати Спільну резолюцію</a>
+    <section class="section" id="participants">
+      <div class="container">
+        <div class="eyebrow">Учасники заходу</div>
+        <h2 class="section-title">Хто долучився до публічної презентації</h2>
+        <p class="section-lead">Серед учасників заходу були представники міжнародних, державних, правозахисних, батьківських і громадських організацій, а також родини дітей з інвалідністю.</p>
+
+        <div class="participants-wrap">
+          <div class="list-panel">
+            <h3>Представники організацій та інституцій</h3>
+            <ul class="plain-list">
+              <li>Моніторингової місії ООН з прав людини в Україні</li>
+              <li>Департаменту моніторингу додержання прав дитини Секретаріату Уповноваженого Верховної Ради України з прав людини</li>
+              <li>Національної Асамблеї людей з інвалідністю України</li>
+              <li>ГС «Ліга Сильних»</li>
+              <li>ГС «Мережа батьківських організацій»</li>
+              <li>Центру соціальних і трудових досліджень</li>
+              <li>ВГО «Всеукраїнська асоціація допомоги хворим на муковісцидоз»</li>
+              <li>ГО «Майбутнє має право»</li>
+            </ul>
+          </div>
+          <div class="list-panel">
+            <h3>Також були присутні</h3>
+            <ul class="plain-list">
+              <li>ГО «Епі-просвіта»</li>
+              <li>ГО «Українська мережа за права дитини»</li>
+              <li>БО «СОС Дитячі Містечка Україна»</li>
+              <li>Центру прав людини ZMINA</li>
+              <li>ГО УОХФ «Особливі діти»</li>
+              <li>Хмельницького обласного товариства ВО СОІУ</li>
+              <li>БО «Академія розвитку, підтримки та соціальної адаптації дитини “КІДДОМ”»</li>
+              <li>та інших організацій і родин</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="inline-note">
+          <strong>Міністерство оборони України запрошення на подію відхилило.</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="eyebrow">Фотозвіт</div>
+        <h2 class="section-title">Як відбулася презентація</h2>
+        <p class="section-lead">Подія зібрала представників громадських організацій, правозахисної спільноти, міжнародних і державних інституцій, а також батьків дітей з інвалідністю.</p>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item span-7">
+            <img src="assets/images/photo-06.jpg" alt="Загальний план сцени під час публічної презентації Спільної резолюції" />
+            <figcaption>Загальний план публічної презентації в Українському кризовому медіа-центрі</figcaption>
+          </figure>
+          <figure class="gallery-item span-5">
+            <img src="assets/images/photo-01.jpg" alt="Виступ учасниці заходу разом із дитиною" />
+            <figcaption>Голос родин був однією з центральних частин дискусії</figcaption>
+          </figure>
+          <figure class="gallery-item span-4">
+            <img src="assets/images/photo-04.jpg" alt="Виступ експертки під час заходу" />
+            <figcaption>Експертний погляд на потреби родин і доглядову працю</figcaption>
+          </figure>
+          <figure class="gallery-item span-4">
+            <img src="assets/images/photo-03.jpg" alt="Мати з маленькою дитиною під час презентації" />
+            <figcaption>У центрі розмови - реальні потреби дітей з інвалідністю</figcaption>
+          </figure>
+          <figure class="gallery-item span-4">
+            <img src="assets/images/photo-05.jpg" alt="Онлайн-учасник на екрані під час заходу" />
+            <figcaption>До обговорення долучалися також онлайн-учасники</figcaption>
+          </figure>
+          <figure class="gallery-item span-5">
+            <img src="assets/images/photo-02.jpg" alt="Панорамний вигляд зали та сцени під час презентації" />
+            <figcaption>Захід відбувся у змішаному форматі - офлайн та онлайн</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="topics">
+      <div class="container">
+        <div class="eyebrow">Основні теми</div>
+        <h2 class="section-title">Про що говорили під час події</h2>
+        <p class="section-lead">Презентація була побудована навколо правової, соціальної, медичної та правозахисної рамки проблеми.</p>
+
+        <div class="topics-grid">
+          <article class="topic">
+            <div class="topic-number">01</div>
+            <h3>Права дитини - у центрі дискусії</h3>
+            <p>Учасники наголосили, що питання не можна зводити лише до статусу одного з батьків. У центрі має бути дитина з інвалідністю, її потреби та принцип найкращих інтересів дитини.</p>
+          </article>
+          <article class="topic">
+            <div class="topic-number">02</div>
+            <h3>Правова колізія і недискримінація</h3>
+            <p>Обговорювалися колізії між нормами законодавства про мобілізацію та проходження військової служби, а також конституційні й міжнародні гарантії рівності та недискримінації.</p>
+          </article>
+          <article class="topic">
+            <div class="topic-number">03</div>
+            <h3>Щоденні потреби родин</h3>
+            <p>Звучали реальні історії про медикаментозну терапію, реабілітацію, логістику, безпеку, кризовий догляд, соціальні послуги та постійне фізичне й емоційне навантаження на родини.</p>
+          </article>
+          <article class="topic">
+            <div class="topic-number">04</div>
+            <h3>Необхідність обґрунтованих рішень держави</h3>
+            <p>Окрему увагу приділили необхідності рішень, які ґрунтуються на фактах, офіційних даних і відкритому професійному діалозі з державними органами.</p>
+          </article>
+        </div>
+
+        <div class="quote-box">
+          <blockquote>«В центрі всієї цієї дискусії має стояти дитина з інвалідністю і її потреби».</blockquote>
+          <div class="quote-meta">Ігор Бевх, ГС «Ліга Сильних»</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mou">
+      <div class="container">
+        <div class="eyebrow">Позиція Міністерства оборони України</div>
+        <h2 class="section-title">Офіційна відповідь МОУ про близько 2 тисячі військових</h2>
+        <p class="section-lead">Один із ключових елементів публічної дискусії - офіційна відповідь Міністерства оборони України щодо кількості військовослужбовців, які мають дитину з інвалідністю віком до 18 років.</p>
+
+        <div class="mou-grid">
+          <div class="highlight-card">
+            <strong>≈2,000</strong>
+            <span>військовослужбовців мають дитину з інвалідністю віком до 18 років</span>
+            <p>Ці дані наведено у відповіді Міністерства оборони України на депутатське звернення. Саме вони стали однією з фактологічних опор для подальшої адвокації.</p>
+          </div>
+          <div class="content-card">
+            <h3>Що важливо</h3>
+            <p>У відповіді Міністерства оборони України зазначено, що за оперативними даними військову службу проходять близько 2 тисяч військовослужбовців, які мають дитину з інвалідністю до 18 років.</p>
+            <ul>
+              <li>Ця інформація є офіційною і має значення для суспільної дискусії про пропорційність обмежень.</li>
+              <li>Документ підтверджує наявність обмеженого та конкретного масштабу групи, про яку йдеться.</li>
+              <li>Саме тому учасники заходу закликали державу до відкритого і фахового діалогу на основі фактів, а не припущень.</li>
+            </ul>
+            <div class="actions" style="margin-top:20px;">
+              <a class="btn btn-primary" href="assets/documents/vidpovid-mou-pro-2000-viiskovykh.pdf" target="_blank" rel="noopener">Відкрити відповідь МОУ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="documents">
+      <div class="container">
+        <div class="eyebrow">Документи події</div>
+        <h2 class="section-title">Основні матеріали</h2>
+        <p class="section-lead">На сторінці зібрано основні документи, які були використані та представлені під час події.</p>
+
+        <div class="docs-grid">
+          <article class="doc-card">
+            <div class="doc-badge">PDF</div>
+            <h3>Спільна резолюція</h3>
+            <p>Повний текст Спільної резолюції «Захист без винятків і дискримінації: права дітей з інвалідністю під час війни».</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="assets/documents/spilna-rezoliutsiia-15057.pdf" target="_blank" rel="noopener">Відкрити документ</a>
+            </div>
+          </article>
+
+          <article class="doc-card" id="registry">
+            <div class="doc-badge">PDF</div>
+            <h3>Реєстр заяв приєднання</h3>
+            <p>Реєстр юридичних і фізичних осіб, які приєдналися до Спільної резолюції станом на сьогодні.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="assets/documents/reiestr-pryiednannia-do-spilnoi-rezoliutsii.pdf" target="_blank" rel="noopener">Переглянути реєстр</a>
+            </div>
+          </article>
+
+          <article class="doc-card">
+            <div class="doc-badge">PDF</div>
+            <h3>Відповідь МОУ</h3>
+            <p>Офіційна відповідь Міністерства оборони України щодо близько 2 тисяч військовослужбовців, які мають дитину з інвалідністю віком до 18 років.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="assets/documents/vidpovid-mou-pro-2000-viiskovykh.pdf" target="_blank" rel="noopener">Відкрити документ</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="next-steps">
+      <div class="container">
+        <div class="eyebrow">Подальші кроки</div>
+        <h2 class="section-title">Що відбувається далі</h2>
+        <p class="section-lead">Публічна презентація була лише одним із етапів адвокації. Далі триває офіційна комунікація з державними органами та міжнародними інституціями.</p>
+
+        <div class="steps">
+          <article class="step">
+            <strong>01</strong>
+            <h3>Офіційні звернення</h3>
+            <p>Направлено звернення до відповідальних державних органів із запитом щодо оцінки впливу та підстав офіційних позицій.</p>
+          </article>
+          <article class="step">
+            <strong>02</strong>
+            <h3>Збір і аналіз відповідей</h3>
+            <p>Отримані відповіді будуть систематизовані та використані для подальшої адвокації на національному рівні.</p>
+          </article>
+          <article class="step">
+            <strong>03</strong>
+            <h3>Національна й міжнародна адвокація</h3>
+            <p>Після цього пакет документів і позицій подаватиметься до Президента України та міжнародних правозахисних інституцій.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="join">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="eyebrow">Спільна резолюція відкрита</div>
+          <h2 class="section-title">Приєднатися до Спільної резолюції</h2>
+          <p>Ми продовжуємо збір підтримки від правозахисних, громадських, професійних та батьківських спільнот. Якщо ваша організація або ви особисто підтримуєте позицію резолюції, зв’яжіться з нами.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:office@15057.org.ua?subject=Приєднання%20до%20Спільної%20резолюції">Написати листа</a>
+            <a class="btn btn-secondary" href="assets/documents/spilna-rezoliutsiia-15057.pdf" target="_blank" rel="noopener">Спочатку прочитати документ</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <a class="brand footer-brand" href="https://15057.org.ua/">
-          <img src="https://15057.org.ua/assets/logo-gold.png" alt="" />
-          <span><b>№15057</b><small>рівний захист дітей з інвалідністю</small></span>
-        </a>
-        <p>ГО «Майбутнє має право»</p>
+    <div class="container">
+      <div class="footer-flex">
+        <div>ГО «Майбутнє має право» - сторінка події</div>
+        <div>Контакт: <a href="mailto:office@15057.org.ua">office@15057.org.ua</a></div>
       </div>
-      <div>
-        <h3>Подія</h3>
-        <p>26.08.2026<br />14:30<br />70–90 хв</p>
-      </div>
-      <div>
-        <h3>Контакти</h3>
-        <p>м. Київ<br /><a href="mailto:office@15057.org.ua">office@15057.org.ua</a></p>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <nav class="footer-legal" aria-label="Юридична інформація">
-        <a href="https://15057.org.ua/privacy-policy.html">Політика конфіденційності</a>
-        <a href="https://15057.org.ua/terms.html">Правила користування сайтом</a>
-      </nav>
-      <p>© 2026 ГО «Майбутнє має право»</p>
     </div>
   </footer>
 </body>
