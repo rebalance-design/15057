@@ -718,11 +718,11 @@ background: linear-gradient(90deg, #075cc6 36%, #ffd500 36%, #ffd500 100%);    o
   .highlight-card strong {
     display: block;
     margin-bottom: 12px;
-    font-size: clamp(78px, 12vw, 136px);
-    line-height: .82;
-    letter-spacing: -0.07em;
-    color: var(--blue-dark);
-    font-weight: 950;
+    font-size: 133px;
+  line-height: .82;
+  color: var(--blue-dark);
+  font-weight: 800;
+  font-family: "russo one", sans-serif;
   }
 
   .highlight-card span {
@@ -887,7 +887,7 @@ background: linear-gradient(90deg, #075cc6 36%, #ffd500 36%, #ffd500 100%);    o
     position: absolute;
     right: 0;
     top: 0;
-    width: 22%;
+    width: 66%;
     height: 12px;
     background: var(--yellow);
   }
@@ -912,8 +912,7 @@ background: linear-gradient(90deg, #075cc6 36%, #ffd500 36%, #ffd500 100%);    o
     font-size: clamp(80px, 15vw, 170px);
     line-height: 1;
     font-weight: 950;
-    letter-spacing: -.07em;
-    color: rgba(255,255,255,.055);
+letter-spacing: -1px;    color: rgba(255,255,255,.055);
     pointer-events: none;
   }
 
@@ -1283,7 +1282,7 @@ color: #fff;
 
 
 .voice-pull {
-  margin: 28px 0 0;
+  margin: 28px 0;
   padding-left: 20px;
   border-left: 5px solid currentColor;
   font-size: 18px;
@@ -1323,8 +1322,7 @@ color: #fff;
 /* ЧОРНА КАРТКА */
 
 .voice-card--dark {
-  background: #0d1117;
-  border-color: #0d1117;
+  background: #000;
   color: #fff;
 }
 
@@ -1341,12 +1339,10 @@ color: #fff;
   position: absolute;
   top: 6px;
   right: 22px;
-  color: #ffd500;
-  font-size: 150px;
+color: #075cc6;  font-size: 150px;
   line-height: 1;
   font-family: Georgia, serif;
   font-weight: 900;
-  opacity: .16;
 }
 
 
@@ -1391,8 +1387,8 @@ color: #fff;
 .voice-card--family::after {
   content: "РОДИНА";
   position: absolute;
-  right: -12px;
-  top: 26px;
+  right: -7px;
+  top: 14px;
   color: rgba(20,105,210,.08);
   font-size: clamp(70px, 11vw, 150px);
   line-height: .8;
@@ -1412,8 +1408,7 @@ color: #fff;
   position: relative;
   z-index: 1;
   max-width: 960px !important;
-  font-size: clamp(30px, 4.4vw, 58px) !important;
-}
+font-size: 48px !important;}
 
 .family-main-quote mark {
   background:
@@ -1428,14 +1423,14 @@ color: #fff;
 }
 
 .family-secondary-quote {
-  max-width: 690px;
-  margin-top: 30px;
+ max-width: 100%;
+  margin: 28px 0;
   padding: 18px 22px;
   background: #1469d2;
   color: #fff;
   border-radius: 16px;
-  font-size: 18px;
-  line-height: 1.45;
+  font-size: 24px;
+  line-height: 1.6;
   font-weight: 700;
 }
 
@@ -1786,14 +1781,14 @@ color: #fff;
         <div class="quote-symbol">“</div>
 
         <blockquote>
-          Наявність батька - це не лише допомога для дитини,
-          це допомога в тому числі й для матері, для родини,
+          Наявність батька – це не лише допомога для дитини,
+          це допомога й для матері, для родини,
           яка перебуває в дуже складних обставинах.
         </blockquote>
 
         <p class="voice-accent voice-accent--light">
           «Якщо ми перестаємо піклуватися про слабших,
-          тоді наше суспільство втрачає шанси на позитивний розвиток у майбутньому».
+          тоді <span class="marker-yellow">наше суспільство втрачає шанси</span> на позитивний розвиток у майбутньому».
         </p>
 
         <div class="voice-author">
@@ -1807,26 +1802,22 @@ color: #fff;
       <article class="voice-card voice-card--family voice-card--wide">
         <div class="voice-label">Голос родини</div>
 
-        <p class="family-intro">
-          Юлія Пилипенко виховує двох дітей з інвалідністю.
-        </p>
-
         <blockquote class="family-main-quote">
           «Я кожен раз
-          <mark>жертвую розвитком і корекцією одного з дітей</mark> -
+          <mark>жертвую розвитком і корекцією однієї з дітей</mark> –
           обираю, кому з них важливіше, бо я не можу фізично
           розірватися в два місця одночасно».
         </blockquote>
 
         <div class="family-secondary-quote">
           «Нам потрібен тато з транспортом.
-          Закінчується літо - мої діти ніде не були, окрім пісочниці...
+          Закінчується літо – мої діти ніде не були, крім пісочниці...
           Ми сидимо в ізоляції».
         </div>
 
         <div class="voice-author">
           <strong>Юлія Пилипенко</strong>
-          <span>мама двох дітей з інвалідністю</span>
+          <span>мама <strong>двох</strong> дітей з інвалідністю</span>
         </div>
       </article>
 
@@ -1836,7 +1827,7 @@ color: #fff;
         <div class="voice-label">Голос родини</div>
 
         <blockquote>
-          «Ми вже стільки віддали цій державі -
+          «Ми вже стільки віддали цій державі –
           але коли потребуємо навзаєм хоч трішки,
           то стикаємося з
           <span class="marker-yellow">повним нерозумінням</span>».
@@ -1860,7 +1851,6 @@ color: #fff;
       <div class="container">
         <div class="eyebrow">Позиція Міністерства оборони України</div>
         <h2 class="section-title">Офіційна відповідь МОУ про близько 2 тисячі військових</h2>
-        <p class="section-lead">Один із ключових елементів публічної дискусії – офіційна відповідь Міністерства оборони України щодо кількості військовослужбовців, які мають дитину з інвалідністю віком до 18 років.</p>
 
         <div class="mou-grid">
           <div class="highlight-card">
@@ -1888,7 +1878,6 @@ color: #fff;
       <div class="container">
         <div class="eyebrow">Документи події</div>
         <h2 class="section-title">Основні матеріали</h2>
-        <p class="section-lead">На сторінці зібрано основні документи, використані та представлені під час події.</p>
 
         <div class="docs-grid">
           <article class="doc-card">
@@ -1924,7 +1913,7 @@ color: #fff;
     <section class="section" id="next-steps">
       <div class="container">
         <div class="eyebrow">Подальші кроки</div>
-        <h2 class="section-title">Що відбувається далі</h2>
+        <h2 class="section-title">Що далі</h2>
         <p class="section-lead">Публічна презентація була лише одним із етапів адвокації. Далі триває офіційна комунікація з державними органами та міжнародними інституціями.</p>
 
         <div class="steps">
