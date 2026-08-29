@@ -5054,11 +5054,6 @@ footer a:hover {
   :root {
     --header-h: 72px;
   }
-
-  .brand small {
-    display: none;
-  }
-
   .site-nav {
     gap: 12px;
   }
@@ -5148,11 +5143,7 @@ footer a:hover {
     flex-basis: 52px;
   }
 
-  .brand span {
-    display: none;
-  }
-
-  .nav-toggle {
+   .nav-toggle {
     display: block;
     margin-left: auto;
   }
@@ -5197,17 +5188,17 @@ footer a:hover {
 
   /* hero */
 
-  .hero.section {
-    min-height: 0;
+   .hero.section {
     height: auto;
-    max-height: none;
     margin-top: var(--header-h);
     padding: 48px 0 56px;
     display: block;
     background: #fff;
     color: var(--ink);
   }
-
+.hero-copy {
+  width: 100%;
+}
   .hero-grid {
     display: block;
   }
@@ -5221,9 +5212,8 @@ footer a:hover {
   .hero-title {
     max-width: 100%;
     margin-bottom: 20px;
-    font-size: clamp(43px, 13vw, 58px);
+    font-size: 44px;
     line-height: .95;
-    letter-spacing: -.045em;
   }
 
   .hero-title-main {
