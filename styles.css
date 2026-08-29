@@ -1324,11 +1324,9 @@ padding: 160px 7% 80px;  display: flex;
   max-width: 980px;
   margin-bottom: 30px;
   color: #fff;
-  font-size: clamp(44px, 5.5vw, 70px);
+  font-size: 54px;
   line-height: 1;
-  letter-spacing: -.045em;
 }
-
 /* =========================================================
    PDF MODALS
    ========================================================= */
