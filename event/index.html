@@ -96,14 +96,15 @@ font-size: 64px;    line-height: .98;
     color: var(--muted);
   }
 
-  /* Окремий хедер над hero */
   .site-header {
-    position: relative;
-    z-index: 30;
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid #d9e0e8;
-  }
+  position: fixed;
+  z-index: 30;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #d9e0e8;
+  top: 0;
+  left: 0;
+}
 
   .site-header-inner {
     width: min(calc(100% - 40px), var(--max));
