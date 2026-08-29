@@ -1644,7 +1644,48 @@ line-height: 1.4;}
 }
   
 }
-    
+ .event-video {
+  background: #075cc6;
+  color: #fff;
+}
+
+.event-video .section-title {
+  color: #fff;
+}
+
+.event-video .section-lead {
+  color: rgba(255,255,255,.82);
+}
+
+.event-video .eyebrow {
+  background: #ffd500;
+  color: #111;
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 38px;
+  overflow: hidden;
+  border: 3px solid #111;
+  box-shadow: 12px 12px 0 #ffd500;
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .video-frame {
+    margin-top: 28px;
+    box-shadow: 7px 7px 0 #ffd500;
+  }
+}   
 </style>
 
 </head>
@@ -1725,7 +1766,32 @@ line-height: 1.4;}
         </div>
       </div>
     </section>
+<section class="section event-video" id="video">
+  <div class="container">
 
+    <div class="eyebrow">Повний відеозапис</div>
+
+    <h2 class="section-title">
+      Дивитися публічну презентацію
+    </h2>
+
+    <p class="section-lead">
+      Повний запис презентації Спільної резолюції
+      «Захист без винятків і дискримінації: права дітей з інвалідністю під час війни».
+    </p>
+
+    <div class="video-frame">
+      <iframe
+        src="https://www.youtube.com/embed/vVAjRlwcJ5I"
+        title="Публічна презентація Спільної резолюції"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+  </div>
+</section>
     <section class="section" id="participants">
       <div class="container">
         <div class="eyebrow">Учасники заходу</div>
