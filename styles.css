@@ -3609,9 +3609,8 @@ h3 {
 
 h2 {
   margin-bottom: 20px;
-  font-size: clamp(44px, 5vw, 66px);
+  font-size: 54px;
   line-height: .98;
-  letter-spacing: -.045em;
   font-weight: 850;
 }
 
@@ -3881,8 +3880,7 @@ font-size: 16px;  line-height: 1.2;
 .hero.section {
   position: relative;
   height: 100vh;
-  padding: 190px 7%;
-  display: flex;
+padding: 160px 7% 80px;  display: flex;
   align-items: center;
   overflow: hidden;
   color: #fff;
@@ -3922,7 +3920,7 @@ font-size: 16px;  line-height: 1.2;
 }
 
 .hero-visual {
-  width: 30%;
+  width: 40%;
 }
 
 .hero-title-main {
@@ -4162,9 +4160,8 @@ font-size: 16px;  line-height: 1.2;
 .form-section-intro h2 {
   max-width: 460px;
   margin: 0 0 20px;
-  font-size: clamp(46px, 4.6vw, 64px);
-  line-height: .98;
-  letter-spacing: -.045em;
+  font-size: 54px;
+  line-height: 1;
 }
 
 .form-section-intro > p:last-child {
@@ -4506,7 +4503,7 @@ font-size: 16px;  line-height: 1.2;
 }
 
 .values article:nth-child(2) .value-number {
-  color: #9b8100;
+  color: #ffd500;
 }
 
 .values article:nth-child(3) .value-number {
@@ -4582,15 +4579,14 @@ font-size: 16px;  line-height: 1.2;
   margin-bottom: 20px;
 }
 
-.media-outlet,
-.media-kind {
+.media-outlet, .media-kind {
   display: inline-flex;
   width: fit-content;
   padding: 6px 9px;
   border-radius: 3px;
-  font-size: 10.5px;
+  font-size: 14px;
   line-height: 1;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: .03em;
 }
 
@@ -4797,7 +4793,7 @@ font-size: 16px;  line-height: 1.2;
 
 .final-cta {
   padding: 92px 0;
-  background: #080b10;
+  background: linear-gradient(45deg, rgb(4, 29, 63) 10%, rgb(5, 31, 66) 33%, #075cc6 100%);
   color: #fff;
 }
 
@@ -4985,7 +4981,7 @@ footer {
 }
 
 .footer-brand b {
-  color: var(--yellow);
+  color: #fff;
 }
 
 .footer-brand small {
@@ -4994,8 +4990,7 @@ footer {
 
 footer h3 {
   margin: 0 0 12px;
-  color: var(--yellow);
-  font-size: 15px;
+color: #fff;  font-size: 15px;
   line-height: 1.2;
   font-weight: 800;
 }
@@ -5025,6 +5020,9 @@ footer a:hover {
 .social a {
   font-size: 13px;
   font-weight: 700;
+  border: 1px solid #ffffff80;
+  padding: 4px 8px;
+  border-radius: 20px;
 }
 
 .footer-bottom {
