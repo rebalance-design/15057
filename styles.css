@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
-
+/*
 :root {
   --navy: #0e2038;
   --navy2: #142b49;
@@ -117,8 +117,7 @@ button, input, select, textarea { font: inherit; }
   background: var(--cream);
 }
 
-/* Фото залишається вписаним через contain, але живе на окремому шарі.
-   Завдяки масці його ліва межа поступово розчиняється, а не ділить hero навпіл. */
+
 .hero::before {
   content: "";
   position: absolute;
@@ -134,7 +133,6 @@ button, input, select, textarea { font: inherit; }
   mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.10) 9%, rgba(0, 0, 0, 0.58) 27%, #000 47%);
 }
 
-/* Бежевий градієнт захищає текст і м'яко з'єднує фото з фоном секції. */
 .hero::after {
   content: "";
   position: absolute;
@@ -633,10 +631,6 @@ footer h3 { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; 
   .values strong { font-size: 17px; }
 }
 
-
-/* =========================
-   Form-only second screen
-   ========================= */
 .join-section {
   position: relative;
   overflow: hidden;
@@ -715,9 +709,7 @@ footer h3 { font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; 
   background: linear-gradient(135deg, rgba(184, 148, 77, 0.08), rgba(255, 253, 248, 0.72));
 }
 
-/* =========================
-   Resolution PDF modal
-   ========================= */
+
 body.modal-open {
   overflow: hidden;
 }
@@ -937,10 +929,6 @@ body.modal-open {
   }
 }
 
-
-/* =========================
-   Form refinements v8
-   ========================= */
 .site-nav .nav-cta-primary {
   color: #fffdf8;
   background: var(--navy);
@@ -1078,9 +1066,7 @@ body.modal-open {
   }
 }
 
-/* =========================
-   Form simplification v9
-   ========================= */
+
 .form-only-layout {
   max-width: 860px;
 }
@@ -1127,9 +1113,6 @@ body.modal-open {
 }
 
 
-/* =========================
-   Form, footer and legal pages v11
-   ========================= */
 .statement-preparation {
   display: grid;
   gap: 14px;
@@ -1331,12 +1314,9 @@ body.modal-open {
     padding-right: 52px;
   }
 }
-
+*/
 /* =========================
-   Mobile adaptive v12
-   ========================= */
-
-/* Prevent long links, filenames and headings from creating horizontal scroll. */
+ 
 html,
 body {
   max-width: 100%;
@@ -1706,7 +1686,7 @@ section[id] {
   textarea {
     min-height: 50px;
     border-radius: 14px;
-    font-size: 16px; /* Prevents iOS from zooming into form fields. */
+    font-size: 16px; 
   }
 
   input[type="file"] {
@@ -2071,10 +2051,6 @@ border-right: none;
 }
 
 
-/* =========================
-   Mobile corrections v13
-   ========================= */
-
 .site-header {
   z-index: 120;
   isolation: isolate;
@@ -2087,8 +2063,7 @@ border-right: none;
 }
 
 @media (max-width: 920px) {
-  /* Do not lock body scrolling when the compact menu opens: on iOS this can
-     detach a sticky header and make the menu button appear to disappear. */
+  
   body.nav-open {
     overflow: visible;
   }
@@ -2165,9 +2140,6 @@ border-right: none;
     align-items: center;
   }
 
-  /* The built-in mobile PDF viewer often uses a minimum internal width.
-     Give it a wider virtual viewport and scale the complete viewer down so
-     the page is visible across the screen instead of being cut off. */
   .pdf-frame-wrap {
     border-radius: 0;
   }
@@ -2191,9 +2163,6 @@ border-right: none;
   }
 }
 
-/* =========================
-   Mobile refinements v14
-   ========================= */
 
 .hero-mobile-photo {
   display: none;
@@ -2215,8 +2184,7 @@ border-right: none;
 }
 
 @media (max-width: 700px) {
-  /* On phones the square image is shown as a real content block instead of
-     being hidden behind text as a background layer. */
+ 
   .hero::before {
     display: none;
   }
@@ -2248,7 +2216,7 @@ border-right: none;
     object-position: center;
   }
 
-  /* Keep the join/about/bill/final blocks visually connected. */
+
   .join-section {
     padding-bottom: 42px;
   }
@@ -2265,9 +2233,7 @@ border-right: none;
     margin-bottom: 12px;
   }
 
-  /* Native mobile PDF plug-ins keep their own wide viewport and can create
-     horizontal scrolling. On phones we render every page into a responsive
-     canvas with PDF.js instead. */
+
   .pdf-frame {
     display: none !important;
     width: 100% !important;
@@ -2354,9 +2320,6 @@ border-right: none;
 }
 
 
-/* =========================
-   Thank-you page
-   ========================= */
 
 .thank-you-main {
   min-height: 72vh;
@@ -2478,10 +2441,6 @@ border-right: none;
   background: #fff;
 }
 
-
-/* =========================
-   Template format chooser
-   ========================= */
 
 .template-choice-intro {
   margin: -10px 0 2px;
@@ -2627,9 +2586,7 @@ border-right: none;
     min-height: 68px;
   }
 }
-/* =========================
-   Stories questionnaires
-   ========================= */
+
 
 .stories-questionnaires {
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2713,9 +2670,6 @@ border-right: none;
     font-size: 13px;
   }
 }
-/* =========================
-   Media publications
-   ========================= */
 
 .media-section {
   position: relative;
@@ -2931,13 +2885,6 @@ border-right: none;
 
 
 
-/* =========================================================
-   EVENT PAGE — 27.08.2026
-   "Захист без винятків та дискримінації"
-   ========================================================= */
-
-/* На основному сайті #about має спеціальні відступи.
-   Для сторінки події повертаємо стандартну секцію. */
 .event-page #about {
   padding: 92px 0;
 }
@@ -2952,8 +2899,6 @@ border-right: none;
 .event-page .narrow-wide {
   max-width: 1040px;
 }
-
-/* ---------- HERO: дата / час / формат ---------- */
 
 .event-page .event-facts {
   display: grid;
@@ -2989,7 +2934,7 @@ border-right: none;
   font-weight: 700;
 }
 
-/* ---------- Локація в hero-card ---------- */
+
 
 .event-page .location-mini {
   display: grid;
@@ -3016,7 +2961,7 @@ border-right: none;
   font-size: 12px;
 }
 
-/* ---------- Примітка про непідтверджених учасників ---------- */
+
 
 .event-page .notice {
   margin-top: 28px;
@@ -3026,7 +2971,7 @@ border-right: none;
   color: #8f6d31;
 }
 
-/* ---------- Основна інформація про формат ---------- */
+
 
 .event-page .info-grid {
   display: grid;
@@ -3083,7 +3028,6 @@ border-right: none;
   font-size: 12px;
 }
 
-/* ---------- Структура заходу ---------- */
 
 .event-page .program-list {
   display: grid;
@@ -3130,7 +3074,6 @@ border-right: none;
   font-size: 14px;
 }
 
-/* ---------- Контактний блок ---------- */
 
 .event-page .contact-card {
   padding: 32px;
@@ -3174,10 +3117,6 @@ border-right: none;
 }
 
 
-/* =========================================================
-   TABLET
-   ========================================================= */
-
 @media (max-width: 1040px) {
   .event-page .info-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3188,10 +3127,6 @@ border-right: none;
   }
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
 
 @media (max-width: 780px) {
   .event-page #about {
@@ -3274,19 +3209,11 @@ border-right: none;
       url("assets/ukmc-hero.jpg") center 45% / cover no-repeat;
   }
 }
-/* ---------- HERO background ---------- */
-
-
-
-/* ---------- Hero description ---------- */
 
 .event-page .hero-event-description {
   max-width: 790px;
   font-weight: 600;
 }
-
-
-/* ---------- Format + duration on the left ---------- */
 
 .event-page .hero-event-meta {
   display: flex;
@@ -3306,7 +3233,6 @@ border-right: none;
 }
 
 
-/* ---------- Main blue event card ---------- */
 
 .event-page .event-main-card {
   min-height: 470px;
@@ -3355,7 +3281,6 @@ border-right: none;
 }
 
 
-/* ---------- Time ---------- */
 
 .event-page .event-main-time {
   display: flex;
@@ -3378,7 +3303,6 @@ border-right: none;
 }
 
 
-/* ---------- Location ---------- */
 
 .event-page .event-main-location {
   padding-top: 28px;
@@ -3406,9 +3330,6 @@ border-right: none;
   line-height: 1.55;
 }
 
-/* =========================================================
-   2 SCREEN — restore vertical spacing
-   ========================================================= */
 
 .event-page #about {
   padding-top: 92px !important;
@@ -3418,9 +3339,6 @@ border-right: none;
 .event-page li::before {
   top: 10px;
 }
-/* =========================================================
-   FORMAT CARDS 01–04
-   ========================================================= */
 
 .event-page .info-grid {
   gap: 20px;
@@ -3493,11 +3411,6 @@ border-right: none;
   z-index: 1;
 }
 
-
-/* =========================================================
-   LAST SCREEN BEFORE FOOTER
-   ========================================================= */
-
 .event-page .final-cta {
   padding-top: 92px !important;
   padding-bottom: 92px !important;
@@ -3567,13 +3480,7 @@ border-right: none;
   }
 
 
-
-
-
-/* =========================================================
-   15057 - BOLD BLUE / YELLOW IDENTITY
-   ВСТАВИТИ В КІНЕЦЬ styles.css
-   ========================================================= */
+*/
 
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,400..900;1,400..900&family=Cuprum:ital,wght@0,400..700;1,400..700&family=Russo+One&display=swap');
 
