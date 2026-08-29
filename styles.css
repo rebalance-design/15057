@@ -3732,8 +3732,7 @@ p {
   padding: 8px 0;
   color: #202631;
   text-decoration: none;
-  font-size: 13px;
-  line-height: 1.2;
+font-size: 16px;  line-height: 1.2;
   font-weight: 750;
   white-space: nowrap;
   transition: color .16s ease;
@@ -3881,47 +3880,29 @@ p {
 
 .hero.section {
   position: relative;
-  min-height: 760px;
-  height: calc(100svh - var(--header-h));
-  max-height: 920px;
-  margin-top: var(--header-h);
-  padding: 70px 0;
+  height: 100vh;
+  padding: 190px 7%;
   display: flex;
   align-items: center;
   overflow: hidden;
   color: #fff;
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(5, 31, 66, .92) 0%,
-      rgba(5, 38, 80, .84) 34%,
-      rgba(6, 48, 96, .63) 55%,
-      rgba(4, 31, 67, .28) 77%,
-      rgba(4, 31, 67, .11) 100%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(2, 15, 34, .18),
-      rgba(2, 15, 34, .06)
-    ),
-    url("assets/hero-family.webp");
-  background-size: cover;
-  background-position: center 42%;
+  background-image: linear-gradient(72deg, rgb(4, 19, 39) 0%, rgb(19, 40, 67) 38%, rgba(49, 56, 63, 0.64) 44%, rgba(4, 31, 67, 0) 50%, rgba(4, 31, 67, .11) 100% ), linear-gradient( 0deg, rgba(2, 15, 34, .18), rgba(2, 15, 34, .06) ), url("assets/hero-family.webp");
+  background-size: contain;
+  background-position: 122%;
   background-repeat: no-repeat;
+  background-color: rgb(5, 31, 66);
 }
 
 .hero-grid {
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 710px) minmax(280px, 390px);
+  display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
   gap: 64px;
 }
 
-.hero-copy,
-.hero-visual {
-  min-width: 0;
+.hero-copy {
+  width: 60%;
 }
 
 .hero .eyebrow {
@@ -3935,12 +3916,13 @@ p {
 }
 
 .hero-title {
-  max-width: 720px;
-  margin: 0 0 22px;
-  font-size: clamp(56px, 5.3vw, 82px);
-  line-height: .93;
-  letter-spacing: -.055em;
+  font-size: 72px;
+  line-height: 1;
   font-weight: 850;
+}
+
+.hero-visual {
+  width: 30%;
 }
 
 .hero-title-main {
