@@ -282,7 +282,9 @@ font-size: 64px;    line-height: .98;
     line-height: 1.2;
     transition: transform .16s ease, box-shadow .16s ease, background-color .16s ease, color .16s ease;
   }
-
+.hero-mobile-photo {
+  display: none;
+}
   .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 24px rgba(17,24,39,.18);
@@ -1070,7 +1072,50 @@ letter-spacing: -1px;    color: rgba(255,255,255,.055);
       grid-template-columns: 1fr;
       gap: 18px;
     }
+  .hero {
+    background-image: none !important;
+    background: #ffffff !important;
+    color: #111827;
+    min-height: auto;
+  }
 
+  /* Прибираємо всі градієнтні оверлеї */
+  .hero::before,
+  .hero::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  /* Якщо є окремий overlay-елемент */
+  .hero-overlay,
+  .hero-gradient,
+  .hero-bg-overlay {
+    display: none !important;
+  }
+
+  /* Текст hero на білому фоні */
+  .hero h1,
+  .hero h2,
+  .hero p {
+    color: #111827;
+  }
+
+  .hero-mobile-photo {
+    display: block;
+    width: calc(100% + 28px);
+    max-width: none;
+    height: auto;
+
+    margin-left: -14px;
+    margin-right: -14px;
+    margin-top: 24px;
+    margin-bottom: 28px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 0;
+  }
     .hero h1 {
       font-size: clamp(44px, 14vw, 66px);
       line-height: .9;
@@ -1524,6 +1569,11 @@ font-size: 48px !important;}
           <div class="eyebrow">Публічна презентація Спільної резолюції</div>
           <h1>Захист без&nbsp;винятків <span>і&nbsp;дискримінації</span></h1>
           <p>Права дітей з інвалідністю під час війни – результати події, документи, фотозвіт і подальші кроки адвокації в контексті законопроєкту №&nbsp;15057.</p>
+          <img
+  class="hero-mobile-photo"
+  src="../assets/55489749670_64972f7ce1_k.jpg"
+  alt="Публічна презентація Спільної резолюції в Українському кризовому медіа-центрі"
+/>
           <div class="hero-meta">
             <div class="meta-chip">26 серпня 2026 року</div>
             <div class="meta-chip">Український кризовий медіа-центр, Київ</div>
