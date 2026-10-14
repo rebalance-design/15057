@@ -74,6 +74,7 @@ if (navToggle && nav) {
 /* Resolution endorsement form */
 const form = document.querySelector('#join-form');
 const fileField = document.querySelector('#signed-file');
+const fileSelection = document.querySelector('#file-selection');
 const submitButton = document.querySelector('#submit-button');
 const formStatus = document.querySelector('#form-status');
 const formStartedAt = Date.now();
@@ -90,6 +91,17 @@ function clearStatus() {
 
   formStatus.textContent = '';
   formStatus.className = 'form-status';
+}
+
+function updateFileSelection(files) {
+  if (!fileSelection) return;
+
+  if (!files.length) {
+    fileSelection.textContent = 'No files selected';
+    return;
+  }
+
+  fileSelection.textContent = files.map((file) => file.name).join(', ');
 }
 
 function getFileExtension(filename) {
@@ -317,11 +329,13 @@ fileField?.addEventListener('change', () => {
   clearStatus();
 
   const files = Array.from(fileField.files || []);
+  updateFileSelection(files);
 
   try {
     validateFiles(files);
   } catch (error) {
     fileField.value = '';
+    updateFileSelection([]);
 
     showStatus(
       error instanceof Error

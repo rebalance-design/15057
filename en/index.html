@@ -203,11 +203,15 @@
 </div>
 </details>
 </div>
-<label class="field-full">
-              Signed statement: one or two files *
-              <input accept=".p7s,.asice,.pdf,.jpg,.jpeg,.png,.webp,.heic,.heif" id="signed-file" name="signed_file" multiple required="" type="file"/>
+<div class="field-full">
+<label for="signed-file">Signed statement: one or two files *</label>
+<div class="file-picker">
+<input accept=".p7s,.asice,.pdf,.jpg,.jpeg,.png,.webp,.heic,.heif" class="file-picker-input" id="signed-file" name="signed_file" multiple required="" type="file"/>
+<label class="file-picker-button" for="signed-file">Choose files</label>
+<span class="file-picker-selection" id="file-selection">No files selected</span>
+</div>
 <small class="field-help">Attach one file, or two files if the statement consists of two photographed pages. Supported formats: P7S, PDF, JPG, PNG, WEBP, HEIC and HEIF. The maximum size of each file is 8 MB.</small>
-</label>
+</div>
 <label class="checkbox field-full">
 <input name="consent_publication" required="" type="checkbox"/>
 <span>I confirm that I have read the public resolution and agree that my name / the organisation’s name may be included in the list of signatories. *</span>
