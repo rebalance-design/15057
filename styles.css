@@ -449,6 +449,7 @@ padding: 160px 7% 80px;  display: flex;
 .hero-title-accent {
   display: block;
   margin-top: 6px;
+   color: #fff;
 }
 
 .hero .lead {
