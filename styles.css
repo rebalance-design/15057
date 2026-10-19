@@ -425,12 +425,12 @@ padding: 160px 7% 80px;  display: flex;
 
 .hero .eyebrow {
   margin-bottom: 20px;
-  background: var(--yellow);
-  color: #111;
+  background: #075cc6;
+  color: #fff;
 }
 
 .hero .eyebrow::before {
-  background: var(--blue);
+  background: var(--yellow);
 }
 
 .hero-title {
