@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://15057.org.ua/sitemap.xml
+Disallow: /

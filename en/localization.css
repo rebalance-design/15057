@@ -1,0 +1,6 @@
+/* English-only native file-control labels. All layout/colours use the shared homepage CSS. */
+.home-refined .file-picker {display:flex;align-items:center;gap:12px;width:100%;min-height:48px;margin-top:8px;padding:10px;border:1px dashed #9aa7b4;border-radius:6px;background:#fafbf9;}
+.home-refined .form-panel input.file-picker-input {position:absolute;width:1px;height:1px;min-height:0;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;}
+.home-refined .form-panel .file-picker-button {display:inline-flex;flex:0 0 auto;align-items:center;justify-content:center;margin:0;padding:9px 12px;border:0;border-radius:4px;background:#e8eef6;color:#173752;cursor:pointer;font-size:15px;line-height:1.2;}
+.home-refined .file-picker-selection {min-width:0;overflow:hidden;color:var(--ink);font-size:15px;font-weight:500;text-overflow:ellipsis;white-space:nowrap;}
+.home-refined .file-picker-input:focus-visible + .file-picker-button {outline:3px solid var(--blue);outline-offset:3px;}
